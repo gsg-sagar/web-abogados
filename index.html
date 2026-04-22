@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saval García Abogados - Callosa d'en Sarrià</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+        :root { --gold: #c5a059; --dark-blue: #1a2a3a; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, .brand-name { font-family: 'Playfair Display', serif; }
+        .whatsapp-float {
+            position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 100; display: flex; align-items: center; justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <a href="https://wa.me/34614635342" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50 py-4">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
+            <img src="logo.jpg" alt="Logo" class="h-16 mb-2 object-contain">
+            <div class="brand-name text-3xl md:text-5xl font-bold text-slate-900 text-center uppercase tracking-tight">
+                SAVAL GARCÍA <span class="text-[#c5a059]">ABOGADOS</span>
+            </div>
+            <div class="flex space-x-6 font-semibold uppercase text-[10px] tracking-[0.2em] mt-4 border-t pt-3 w-full justify-center text-slate-500">
+                <a href="#inicio" class="hover:text-[#c5a059] transition">Inicio</a>
+                <a href="#servicios" class="hover:text-[#c5a059] transition">Servicios</a>
+                <a href="#nosotros" class="hover:text-[#c5a059] transition">Nosotros</a>
+                <a href="#contacto" class="hover:text-[#c5a059] transition">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="relative h-[50vh] flex items-center justify-center text-center text-white bg-slate-900">
+        <div class="absolute inset-0 opacity-40 bg-black">
+            <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 px-4">
+            <h1 class="text-3xl md:text-5xl mb-2">Excelencia Jurídica</h1>
+            <p class="text-lg font-light tracking-widest uppercase text-[#c5a059]">Callosa d'en Sarrià</p>
+        </div>
+    </header>
+
+    <section id="servicios" class="py-16 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl mb-2">Áreas de Especialización</h2>
+            <div class="w-16 h-1 bg-[#c5a059] mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 shadow-sm border-l-4 border-[#c5a059]">
+                <h3 class="font-bold text-lg mb-2">Derecho Civil y Familia</h3>
+                <p class="text-sm text-gray-600">Divorcios, herencias, contratos y reclamaciones.</p>
+            </div>
+            <div class="bg-white p-6 shadow-sm border-l-4 border-[#c5a059]">
+                <h3 class="font-bold text-lg mb-2">Administrativo y Tributario</h3>
+                <p class="text-sm text-gray-600">Recursos contra la administración y asesoría fiscal.</p>
+            </div>
+            <div class="bg-white p-6 shadow-sm border-l-4 border-[#c5a059]">
+                <h3 class="font-bold text-lg mb-2">Segunda Oportunidad</h3>
+                <p class="text-sm text-gray-600">Concurso de persona física y cancelación de deudas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl text-center mb-12">Nuestro Equipo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <img src="javier.jpg" class="w-40 h-52 mx-auto object-cover rounded shadow-lg mb-4 border-2 border-[#c5a059]">
+                    <h3 class="text-xl font-bold text-[#c5a059]">Vicente Javier Saval Galiana</h3>
+                    <p class="text-xs text-gray-400 uppercase mt-1">Colegiado desde 1989</p>
+                </div>
+                <div class="text-center">
+                    <img src="belen.jpg" class="w-40 h-52 mx-auto object-cover rounded shadow-lg mb-4 border-2 border-[#c5a059]">
+                    <h3 class="text-xl font-bold text-[#c5a059]">Mª Belén García Espasa</h3>
+                    <p class="text-xs text-gray-400 uppercase mt-1">Colegiada desde 1996</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=200&h=250" class="w-40 h-52 mx-auto object-cover rounded shadow-lg mb-4 border-2 border-[#c5a059]">
+                    <h3 class="text-xl font-bold text-[#c5a059]">José Saval García</h3>
+                    <p class="text-xs text-gray-400 uppercase mt-1">Colegiado desde 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-16 max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl mb-6">Contacto Directo</h2>
+                <div class="space-y-4">
+                    <a href="tel:+34614635342" class="flex items-center p-4 bg-white shadow-sm hover:text-[#c5a059]">
+                        <i class="fas fa-phone w-10 text-[#c5a059]"></i> +34 614 63 53 42
+                    </a>
+                    <a href="mailto:savalgarciaabogados@gmail.com" class="flex items-center p-4 bg-white shadow-sm hover:text-[#c5a059]">
+                        <i class="fas fa-envelope w-10 text-[#c5a059]"></i> savalgarciaabogados@gmail.com
+                    </a>
+                    <div class="p-4 bg-white shadow-sm flex items-center">
+                        <i class="fas fa-map-marker-alt w-10 text-[#c5a059]"></i>
+                        <span>C/ Ramón y Cajal, 14, 1º Izq. Callosa d'en Sarrià</span>
+                    </div>
+                </div>
+                <div class="mt-8 flex space-x-4">
+                    <a href="https://facebook.com/savalgarciaabogados" target="_blank" class="text-2xl text-slate-700 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/savalgarciaabogados" target="_blank" class="text-2xl text-slate-700 hover:text-pink-600"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="h-80 bg-gray-200 shadow-lg rounded overflow-hidden">
+                <iframe src="fas fa-map-marker-alt w-10 text-[#c5a059]" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-gray-100 text-xs text-gray-500 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h4 class="font-bold uppercase mb-2">Política de Privacidad y Protección de Datos</h4>
+            <p>De conformidad con el RGPD, Saval García Abogados le informa que los datos proporcionados a través de nuestros canales de contacto serán tratados con la única finalidad de gestionar su consulta profesional. Sus datos no serán cedidos a terceros salvo obligación legal. Puede ejercer sus derechos de acceso, rectificación y supresión enviando un correo a savalgarciaabogados@gmail.com.</p>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-gray-600 py-6 text-center text-[10px] uppercase tracking-widest">
+        &copy; 2026 Saval García Abogados
+    </footer>
+
+</body>
+</html>
