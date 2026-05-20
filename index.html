@@ -1737,7 +1737,7 @@
 
   function normalizeStr(str) {
     if (!str) return '';
-    return str.replace(/\s+/g, ' ').trim();
+    return str.replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
   }
 
   // Pre-normalize keys and values for bulletproof matching
