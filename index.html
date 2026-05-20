@@ -411,6 +411,73 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #94752a;
     }
+
+    /* Custom text selection highlight */
+    ::selection {
+      background: rgba(201, 168, 76, 0.25);
+      color: var(--carbon);
+    }
+    ::-moz-selection {
+      background: rgba(201, 168, 76, 0.25);
+      color: var(--carbon);
+    }
+
+    /* Micro-elevations on area pills hover */
+    .tpill {
+      transition: all .25s cubic-bezier(.22,1,.36,1);
+    }
+    .tpill:hover, .tpill.hi {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15,28,53,0.08);
+    }
+
+    /* Hide Google Translate default toolbar and attribution */
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner,
+    .goog-te-gadget-icon,
+    #goog-gt-tt {
+      display: none !important;
+    }
+    body {
+      top: 0 !important;
+      position: static !important;
+    }
+    .skiptranslate iframe {
+      display: none !important;
+    }
+
+    /* Styling for floating language container */
+    .lang-container {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 999;
+    }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 10px 16px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(15,28,53,0.1);
+      background: var(--ivory);
+      color: var(--carbon);
+      border: 1px solid rgba(15,28,53,0.12);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .lang-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+      color: #94752a;
+      box-shadow: 0 6px 16px rgba(15,28,53,0.15);
+    }
   </style>
 </head>
 <body>
@@ -548,14 +615,18 @@
         </a>
       </div>
 
-      <div class="flex flex-wrap gap-12 sm:gap-24">
+      <div class="flex flex-wrap items-baseline gap-12 sm:gap-24">
         <div class="a4" style="animation-delay:0.8s">
-          <span class="block serif font-normal mb-1" style="font-size:2.5rem;color:var(--sand)">+35</span>
+          <span class="block serif font-normal leading-none mb-2" style="font-size:2.5rem;color:var(--sand)">+35</span>
           <span class="block text-[.6rem] font-medium tracking-[.15em] uppercase text-white/40">Años de ejercicio</span>
         </div>
         <div class="a4" style="animation-delay:0.9s">
-          <span class="block serif font-normal mb-1" style="font-size:2.5rem;color:var(--sand)">7</span>
+          <span class="block serif font-normal leading-none mb-2" style="font-size:2.5rem;color:var(--sand)">7</span>
           <span class="block text-[.6rem] font-medium tracking-[.15em] uppercase text-white/40">Áreas de especialización</span>
+        </div>
+        <div class="a4" style="animation-delay:1.0s">
+          <span class="block serif font-normal leading-none mb-2" style="font-size:2.1rem;color:var(--sand);text-transform:lowercase">(bilingual)</span>
+          <span class="block text-[.6rem] font-medium tracking-[.15em] uppercase text-white/40">we speak english</span>
         </div>
       </div>
     </div>
@@ -1334,6 +1405,14 @@
   </a>
 </div>
 
+<!-- Traductor flotante (abajo a la izquierda) -->
+<div class="lang-container">
+  <button onclick="toggleLanguage()" class="lang-btn" aria-label="Traducir / Translate">
+    <span id="lang-flag-icon"></span>
+    <span class="lang-btn-text">Translate to English</span>
+  </button>
+</div>
+
 
 <script>
   function toggleFaq(btn) {
@@ -1413,14 +1492,378 @@
     
     btn.addEventListener('click', toggle);
     links.forEach(l => {
-      l.addEventListener('click', () => {
+      l.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = l.getAttribute('href');
+        const targetEl = document.querySelector(targetId);
+        
         nav.classList.remove('active');
         burgerIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
         document.body.style.overflow = '';
+        
+        if (targetEl) {
+          setTimeout(() => {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        }
       });
     });
   })();
+
+    /* Language Translation Script - 100% Client-Side Native Dictionary */
+  const dictEsToEn = {
+    // General
+    "Saltar al contenido": "Skip to content",
+    "Servicios": "Services",
+    "Civil": "Civil",
+    "Penal": "Criminal",
+    "Laboral": "Labor",
+    "LSO": "LSO",
+    "Fiscal": "Tax",
+    "Mercantil": "Corporate",
+    "El equipo": "Our Team",
+    "Contacto": "Contact",
+
+    // Mobile Navigation & Mobile Headers
+    "Civil & Familia": "Civil & Family",
+    "Derecho Penal": "Criminal Law",
+    "Derecho Laboral": "Labor Law",
+    "Segunda Oportunidad (LSO)": "Second Opportunity (LSO)",
+    "Derecho Fiscal": "Tax Law",
+    "Derecho Mercantil": "Corporate Law",
+    "Zona": "Coverage",
+    "WhatsApp": "WhatsApp",
+    "¿Hablamos?": "Chat with us?",
+    "Llamar ahora": "Call now",
+
+    // Hero Section
+    "Saval García Abogados · Desde 1989": "Saval García Lawyers · Since 1989",
+    "Abogados en<br>Callosa d'en Sarrià,<br><span>Altea y Benidorm</span>": "Lawyers in<br>Callosa d'en Sarrià,<br><span>Altea & Benidorm</span>",
+    "Colegiados en el Ilustre Colegio de Abogados de Alicante. Firma jurídica con un largo recorrido en toda la Marina Baixa. Ofrecemos representación profesional, asesoramiento estratégico y defensa personalizada para empresas y particulares.": "Members of the Alicante Bar Association. Law firm with an extensive track record in Marina Baixa. We offer professional representation, strategic advice and personalized defense for businesses and individuals.",
+    "Áreas de práctica →": "Practice areas →",
+    "Años de ejercicio": "Years of practice",
+    "Áreas de especialización": "Areas of specialization",
+    "we speak english": "we speak english",
+    "(bilingual)": "(bilingual)",
+
+    // Services section
+    "Áreas de práctica jurídica": "Areas of legal practice",
+    "Especialización en cada área<br><i style=\"color:var(--gold)\">del Derecho</i>": "Specialization in each area<br><i style=\"color:var(--gold)\">of Law</i>",
+    "Nuestra firma se estructura en departamentos especializados para ofrecerle el rigor técnico que su caso requiere. Representación de alto nivel para empresas y familias.": "Our firm is structured in specialized departments to offer you the technical rigor that your case requires. High-level representation for companies and families.",
+    "Derecho Civil y Familia": "Civil & Family Law",
+    "Aceptación e impugnación de herencias, redacción de contratos de compraventa y arrendamientos. Divorcios, convenios reguladores y reclamaciones de cantidad ante los Tribunales.": "Acceptance and contestation of inheritances, drafting of purchase and lease agreements. Divorces, regulatory agreements and debt claims before the Courts.",
+    "Ver detalle →": "View details →",
+    "Ley de Segunda Oportunidad": "Second Opportunity Law",
+    "Cancelación de deudas para particulares, autónomos y empresas insolventes. Gestionamos el concurso de acreedores de principio a fin para que pueda empezar de cero.": "Cancellation of debts for individuals, self-employed and insolvent companies. We manage bankruptcy proceedings from start to finish so you can start from scratch.",
+    "Asistencia al detenido en comisaría y defensa en juicio. Delitos económicos, contra el patrimonio, violencia doméstica, tráfico. Representamos también a víctimas y acusación particular.": "Assistance to detainees at police stations and defense in court. Economic crimes, property crimes, domestic violence, traffic. We also represent victims and private prosecution.",
+    "Despidos improcedentes y nulos, reclamación de salarios e indemnizaciones, recursos contra la Seguridad Social. Tanto trabajadores como empresas. Actos de conciliación y juicios ante los Tribunales.": "Unfair and void dismissals, wage and compensation claims, appeals against Social Security. Both workers and companies. Conciliation acts and trials before the Courts.",
+    "IRPF, IVA, liquidación de herencias e impuestos locales and defensa activa ante inspecciones y sanciones de la AEAT.": "Personal Income Tax, VAT, inheritance liquidation, local taxes, and active defense against AEAT inspections and penalties.",
+    "Constitución de SL/SA, redacción de contratos, operaciones societarias, recobro de deudas y concurso de acreedores.": "Incorporation of SL/SA, contract drafting, corporate transactions, debt collection, and bankruptcy proceedings.",
+
+    // Civil Section
+    "<span class=\"trule\"></span>Derecho Civil y de Familia · Callosa d'en Sarrià · Marina Baixa": "<span class=\"trule\"></span>Civil & Family Law · Callosa d'en Sarrià · Marina Baixa",
+    "Familia, herencias<br>y patrimonio<br>": "Family, inheritances<br>& property<br>",
+    "Las cuestiones civiles y familiares afectan a lo más importante: sus relaciones familiares y su patrimonio. En Saval García Abogados lo acompañamos desde el primer momento, buscando siempre la solución más eficaz y menos traumática.": "Civil and family matters affect what is most important: your family relationships and your heritage. At Saval García Abogados we support you from the very first moment, always seeking the most effective and least traumatic solution.",
+    "Divorcios y Separaciones": "Divorces and Separations",
+    "Tramitamos tanto el divorcio de mutuo acuerdo como el contencioso ante los Tribunales. Redactamos el convenio regulador, negociamos la custodia, la pensión de alimentos y la compensatoria, y velamos por los derechos de los menores en todo momento. Si hay urgencia, solicitamos medidas provisionales de forma inmediata.": "We handle both mutual agreement and contentious divorces before the Courts. We draft the regulatory agreement, negotiate custody, child support and alimony, and protect the rights of minors at all times. If urgent, we request provisional measures immediately.",
+    "Derechos Reales y Propiedad rústica": "Property Rights & Rural Land",
+    "Estudiamos la defensa tanto judicial como extrajudicial de las necesidades de nuestros clientes en su relación con figuras como son el usufructo, servidumbre, propiedad dominical, lindes, posesión, ventas de cosechas, etc.": "We study the judicial and extrajudicial defense of our clients' needs in relation to figures such as usufruct, easement, domain property, boundaries, possession, crop sales, etc.",
+    "Herencias, Testamentos y Sucesiones": "Inheritances, Testaments & Successions",
+    "Tramitamos testamentos, planificamos y ejecutamos la aceptación de herecia antendiendo a las necesidades concretas de cada cliente. Liquidamos el Impuesto de Sucesiones. Defendemos los derechos de los herederos ante los Tribunales en caso de conflicto.": "We process wills, plan and execute the acceptance of inheritance attending to the specific needs of each client. We settle the Inheritance Tax. We defend the rights of the heirs before the Courts in case of conflict.",
+    "Inmuebles y Contratos": "Real Estate and Contracts",
+    "Negociamos compraventas para conseguir el trato más favorable para nuestros clientes. Redactamos arras, opciones de compra y arrendamientos. Dirección letrada en procedimientos de desahucio, tercerías de dominio, división de cosa común, etc.": "We negotiate sales to achieve the most favorable deal for our clients. We draft deposit agreements, purchase options and leases. Legal representation in eviction proceedings, third-party ownership claims, division of common property, etc.",
+    "Incapacidades y Medidas de Apoyo": "Incapacities and Support Measures",
+    "Tramitamos procedimientos de curatela y de guardador de hecho. Protegemos los intereses y el patrimonio de las personas vulnerables con rigor jurídico y sensibilidad humana.": "We process curatorship and de facto guardian procedures. We protect the interests and assets of vulnerable people with legal rigor and human sensitivity.",
+    "Reclamaciones Civiles y Defensa del Consumidor": "Civil Claims and Consumer Defense",
+    "Reclamamos deudas entre particulares, oposiciones a procedimientos monitorios y nulidad de cláusulas abusivas en hipotecas.": "We claim debts between individuals, oppositions to payment order proceedings and nullity of abusive clauses in mortgages.",
+    "¿Divorcio, herencia o contrato que revisar?": "Divorce, inheritance or contract to review?",
+    "Consulta inicial sin compromiso en C/ Ramón y Cajal, 14 — Callosa d'en Sarrià.": "Initial consultation without obligation at C/ Ramón y Cajal, 14 — Callosa d'en Sarrià.",
+    "Preguntas frecuentes · Civil y Familia": "Frequently asked questions · Civil & Family",
+    "¿Cuál es el plazo mínimo que goza un inquilino en un contrato de arrendamiento de vivienda habitual?": "What is the minimum term that a tenant enjoys in a lease agreement for a habitual residence?",
+    "Tiene derecho a 1 año, con facultad de prorrogarse hasta alcanzar los 5 años.": "They are entitled to 1 year, with the right to be extended up to 5 years.",
+    "¿Puedo modificar la custodia o la pensión después del divorcio?": "Can I modify custody or child support after divorce?",
+    "Sí. Si han cambiado de forma sustancial las circunstancias (empleo, ingresos, nuevo domicilio, necesidades del menor), se puede solicitar una modificación de medidas. Le asesoramos sobre las posibilidades reales en su caso concreto.": "Yes. If circumstances have changed substantially (employment, income, new residence, needs of the minor), a modification of measures can be requested. We advise you on the real possibilities in your specific case.",
+    "¿Ha recibido una demanda de procedimiento monitorio de un banco o entidad bancaria?": "Have you received a payment order lawsuit from a bank or financial institution?",
+    "En ese caso tiene 20 días para oponerse al mismo. Si no se opone, se iniciará un procedimiento de ejecución por el que le podrán embargar las cuentas, devoluciones de renta... No deje pasar el plazo y pregúntenos si tiene posibilidades de defensa.": "In that case you have 20 days to oppose it. If you do not oppose, an execution proceeding will begin by which they can seize your accounts, tax returns... Do not let the deadline pass and ask us if you have defense possibilities.",
+    "¿Tengo derecho a reclamar la legítima si el testamento me excluye?": "Am I entitled to claim the forced share (legítima) if the testament excludes me?",
+    "En muchos casos, sí. La ley protege a los herederos forzosos con la legítima. Si un testamento la vulnera, existe acción judicial para reclamarla. Analizamos la herencia de forma confidencial y le explicamos qué opciones tiene antes de tomar ninguna decisión.": "In many cases, yes. The law protects forced heirs with the legítima. If a testament violates it, there is legal action to claim it. We analyze the inheritance confidentially and explain your options before making any decision.",
+
+    // Penal Section
+    "<span class=\"trule\"></span>Derecho Penal · Defensa y Acusación · Marina Baixa": "<span class=\"trule\"></span>Criminal Law · Defense & Prosecution · Marina Baixa",
+    "Defensa penal<br>desde el primer<br><i style=\"color:var(--gold)\">momento</i>": "Criminal defense<br>from the first<br><i style=\"color:var(--gold)\">moment</i>",
+    "Una detención o una citación judicial en fase de instrucción exigen respuesta inmediata. Nuestros abogados penalistas asisten al detenido en comisaría, elaboran la estrategia de defensa desde el primer instante. También representamos a víctimas como acusación particular cuando es necesario defender sus derechos.": "An arrest or a court summons in the investigation phase requires an immediate response. Our criminal lawyers assist the detainee at the police station, drafting the defense strategy from the very first moment. We also represent victims as private prosecution when it is necessary to defend their rights.",
+    "Asistencia al Detenido": "Assistance to Detainees",
+    "Presencia inmediata en comisaría en el momento de la detención. Asesoramiento sobre el derecho a no declarar, revisión de las diligencias policiales y control de que se respetan todos los derechos del detenido desde el primer segundo. La primera declaración puede determinar el resultado del proceso.": "Immediate presence at the police station at the time of arrest. Advice on the right not to declare, review of police proceedings and control that all rights of the detainee are respected from the first second. The first statement can determine the outcome of the process.",
+    "Delitos Económicos y Fraude": "Economic Crimes and Fraud",
+    "Defensa en procedimientos por estafa, apropiación indebida, administration desleal, alzamiento de bienes y delitos fiscales . Analizamos cada operación económica cuestionada y construimos una defensa técnica rigurosa ante los Tribunales.": "Defense in proceedings for fraud, misappropriation, unfair administration, asset stripping and tax crimes. We analyze each questioned economic operation and build a rigorous technical defense before the Courts.",
+    "Delitos de Tráfico": "Traffic Crimes",
+    "Defensa por conducción bajo los efectos del alcohol o drogas, exceso de velocidad con resultado de lesiones, abandono del lugar del accidente y homicidio o lesiones imprudentes. Revisamos los atestados policiales, los partes médicos y las pruebas de alcoholemia para garantizar que toda la evidencia se ha obtenido con plenas garantías legales.": "Defense for driving under the influence of alcohol or drugs, speeding resulting in injury, leaving the scene of an accident and reckless homicide or injury. We review police reports, medical reports and breathalyzer tests to ensure that all evidence has been obtained with full legal guarantees.",
+    "Delitos contra el Patrimonio": "Crimes against Property",
+    "Robos, hurtos, daños, usurpación de inmuebles y extorsión. Defendemos al investigado garantizando el respeto al principio de presunción de inocencia y, cuando actuamos como acusación particular, reclamamos la máxima responsabilidad penal y civil para el autor, incluida la indemnización íntegra del daño causado.": "Robbery, theft, damage, usurpation of property and extortion. We defend the suspect, guaranteeing respect for the principle of presumption of innocence and, when we act as a private prosecution, we claim maximum criminal and civil liability for the author, including full compensation for the damage caused.",
+    "¿Detenido, citado como investigado o víctima de un delito?": "Detained, summoned as suspect or victim of a crime?",
+    "Llame ahora. La rapidez en los primeros momentos puede ser decisiva para el resultado.": "Call now. Speed in the first moments can be decisive for the result.",
+    "Preguntas frecuentes · Derecho Penal": "Frequently asked questions · Criminal Law",
+    "¿Tengo que declarar si me citan como investigado?": "Do I have to declare if I am summoned as suspect?",
+    "No. Como investigado tiene derecho a no declarar sin que eso perjudique su situación. Es fundamental que antes de acudir a cualquier citación penal consulte con un abogado penalista. Le asesoramos sobre la estrategia más conveniente en su caso concreto.": "No. As a suspect, you have the right not to declare without this harming your situation. It is essential that before attending any criminal summons you consult a criminal lawyer. We advise you on the most convenient strategy in your specific case.",
+    "¿Podéis asistirme en los juzgados de Benidorm y Dénia?": "Can you assist me in the courts of Benidorm and Dénia?",
+    "Sí. Ejercemos habitualmente en toda la proviciencia de Alicante. Con despacho en Callosa d'en Sarrià, cubrimos toda la comarca de la Marina Baixa.": "Yes. We regularly practice throughout the province of Alicante. With our office in Callosa d'en Sarrià, we cover the entire Marina Baixa region.",
+    "¿Pueden los antecedentes penales afectar a mi trabajo o residencia?": "Can criminal records affect my work or residence?",
+    "Sí, en muchos casos. Por eso la defensa desde el inicio del procedimiento es tan importante. Además, una vez cumplida la condena y transcurridos los plazos legales, gestionamos la cancelación de los antecedentes penales en el Registro Central.": "Yes, in many cases. That is why defense from the beginning of the procedure is so important. In addition, once the sentence is served and the legal periods have elapsed, we manage the cancellation of criminal records in the Central Registry.",
+
+    // Laboral Section
+    "<span class=\"trule\"></span>Derecho Laboral · Trabajadores y Empresas · Marina Baixa": "<span class=\"trule\"></span>Labor Law · Workers & Companies · Marina Baixa",
+    "Despidos<br>y derechos laborales —<br>": "Dismissals<br>& labor rights —<br>",
+    "El derecho laboral es terreno de negociación y litigio a partes iguales.": "Labor law is equal parts negotiation and litigation.",
+    "Despido Improcedente y Nulo": "Unfair and Void Dismissal",
+    "Si le han despedido y cree que no hay causa justificada —o que la carta de despido es defectuosa—, tiene un plazo de 20 días hábiles para impugnarlo. Reclamamos la máxima indemnización y, si el despido es nulo (por embarazo, baja médica, ejercicio de derechos), la readmisión inmediata con abono de salarios de tramitación.": "If you have been dismissed and believe there is no justified cause —or that the dismissal letter is defective—, you have a period of 20 business days to contest it. We claim the maximum compensation and, if the dismissal is void (due to pregnancy, medical leave, exercise of rights), immediate reinstatement with payment of processing wages.",
+    "Defensa de los derechos ante la Seguridad Social": "Defense of rights before Social Security",
+    "Gestiones reclamaciones administrativas y judiciales contra la Seguridad Social en defensa de los derechos de trabajadores y empresas": "We manage administrative and judicial claims against Social Security in defense of the rights of workers and companies",
+    "Reclamación de Salarios e Indemnizaciones": "Claim for Wages and Compensation",
+    "Reclamamos nóminas impagadas, horas extras no abonadas, bonus, comisiones y cualquier cantidad adeudada por la empresa. El proceso comienza por un acto de conciliación ante el SMAC y, si no hay acuerdo, continuamos ante el Juzgado de lo Social. No renuncie a lo que le corresponde por falta de información.": "We claim unpaid payrolls, unpaid overtime, bonuses, commissions and any amount owed by the company. The process begins with a conciliation act before SMAC and, if there is no agreement, we continue before the Labor Court. Do not give up what corresponds to you due to lack of information.",
+    "Asesoramiento a Empresas": "Corporate Legal Advice",
+    "Redacción de contratos laborales, cláusulas de no competencia y confidencialidad, política de sanciones y despidos disciplinarios.": "Drafting of employment contracts, non-compete and confidentiality clauses, sanctions policy and disciplinary dismissals.",
+    "¿Le han despedido o tiene un conflicto laboral?": "Have you been dismissed or do you have a labor dispute?",
+    "Los plazos en derecho laboral son cortos. Consúltenos cuanto antes en C/ Ramón y Cajal, 14 — Callosa d'en Sarrià.": "Deadlines in labor law are short. Consult us as soon as possible at C/ Ramón y Cajal, 14 — Callosa d'en Sarrià.",
+    "Preguntas frecuentes · Derecho Laboral": "Frequently asked questions · Labor Law",
+    "¿Cuánto tiempo tengo para impugnar un despido?": "How much time do I have to contest a dismissal?",
+    "El plazo es de 20 días hábiles desde la fecha del despido. Es un plazo muy corto y no se puede recuperar. Contáctenos de forma inmediata si ha recibido una carta de despido o le han comunicado el cese verbalmente.": "The deadline is 20 business days from the date of dismissal. It is a very short period and cannot be recovered. Contact us immediately if you have received a dismissal letter or have been notified verbally.",
+    "¿Qué indemnización me corresponde por despido improcedente?": "What compensation corresponds to me for unfair dismissal?",
+    "Con carácter general, 33 días de salario por año trabajado (con el tope de 24 mensualidades) para contratos posteriores a febrero de 2012. Pero la cifra definitiva depende de varios factores: antigüedad, salario, convenio colectivo y posibles complementos. Le calculamos la cantidad exacta y analizamos si hay margen para mejorarla.": "Generally, 33 days of salary per year worked (with a limit of 24 monthly payments) for contracts after February 2012. But the final figure depends on several factors: seniority, salary, collective agreement and possible supplements. We calculate the exact amount and analyze if there is room to improve it.",
+    "¿Atendéis trabajadores de Benidorm, Altea y Calpe?": "Do you serve workers from Benidorm, Altea and Calpe?",
+    "Sí. Atendemos trabajadores y empresas de toda la Marina Baixa: Benidorm, Altea, Calpe, La Nucía, Finestrat, Villajoyosa, Callosa d'en Sarrià y municipios colindantes. Podemos atenderle presencialmente en nuestro despacho de Callosa o por videollamada.": "Yes. We serve workers and companies throughout the Marina Baixa: Benidorm, Altea, Calpe, La Nucía, Finestrat, Villajoyosa, Callosa d'en Sarrià and adjacent municipalities. We can assist you in person at our Callosa office or by video call.",
+
+    // Segunda Oportunidad Section
+    "<span class=\"trule\"></span>Ley de Segunda Oportunidad · Cancelación de Deudas · Alicante": "<span class=\"trule\"></span>Second Opportunity Law · Debt Cancellation · Alicante",
+    "Cancele sus deudas<br>y empiece de cero —<br><i style=\"color:var(--gold)\">con respaldo legal</i>": "Cancel your debts<br>and start from scratch —<br><i style=\"color:var(--gold)\">with legal backing</i>",
+    "La Ley de Segunda Oportunidad permite a particulares y empresas que se encuentren en situación de insolvencia puedan cancelar sus deudas —incluidas las de Hacienda y la Seguridad Social, dentro de los límites legales— y recuperar su vida financiera. Nuestros abogados en Callosa d'en Sarrià gestionan el proceso completo: desde el primer análisis de viabilidad hasta la obtención de la Exoneración del Pasivo Insatisfecho (EPI).": "The Second Opportunity Law allows individuals and companies in a situation of insolvency to cancel their debts —including those with the Treasury and Social Security, within legal limits— and recover their financial life. Our lawyers in Callosa d'en Sarrià manage the entire process: from the first feasibility analysis to obtaining the Discharge of Unsatisfied Liabilities (EPI).",
+    "¿Quién puede acogerse?": "Who can qualify?",
+    "Cualquier persona física —particular o autónomo— y jurídica que sea insolvente de buena fe y no pueda hacer frente al pago de sus deudas. No es necesario tener deudas millonarias: también funciona para deudas de tarjetas, préstamos personales, hipotecas y deudas fiscales o con la Seguridad Social dentro de los umbrales legales. Le analizamos su caso en una primera consulta para confirmar si cumple los requisitos.": "Any natural person —individual or self-employed— and legal entity that is insolvent in good faith and cannot meet the payment of their debts. It is not necessary to have millionaire debts: it also works for credit card debts, personal loans, mortgages and tax or Social Security debts within the legal thresholds. We analyze your case in an initial consultation to confirm if you meet the requirements.",
+    "Análisis de Viabilidad y Estrategia": "Feasibility Analysis and Strategy",
+    "Antes de iniciar el proceso estudiamos su situación patrimonial completa: deudas, activos, ingresos y tipo de acreedores. Determinamos si la vía más adecuada es el plan de pagos o la liquidación con exoneración, y le explicamos los plazos, costes y consecuencias de cada opción de forma clara y sin letra pequeña.": "Before starting the process we study your full assets situation: debts, assets, income and type of creditors. We determine whether the most appropriate path is the payment plan or liquidation with discharge, and we explain the deadlines, costs and consequences of each option clearly and without small print.",
+    "Gestión Integral del Procedimiento": "Comprehensive Process Management",
+    "Nos encargamos de todo: preparación de la documentación, presentación del concurso de acreedores ante los Tribunales, defensa en situaciones de incidentes, solicitud final de la exoneración final y recursos.": "We handle everything: preparation of documentation, presentation of bankruptcy proceedings before the Courts, defense in situations of incidents, final request for final discharge and appeals.",
+    "Vida después de la Exoneración (EPI)": "Life after the Discharge (EPI)",
+    "Una vez obtenida la Exoneración del Pasivo Insatisfecho (EPI), las deudas exoneradas desaparecen legalmente. Los acreedores no pueden reclamarlas ni ejecutar bienes por ellas. Puede volver a abrir una cuenta bancaria con normalidad, retomar su actividad como autónomo y reconstruir su situación económica desde cero.": "Once the Discharge of Unsatisfied Liabilities (EPI) is obtained, the discharged debts legally disappear. Creditors cannot claim them or execute assets for them. You can reopen a bank account normally, resume your activity as self-employed and rebuild your economic situation from scratch.",
+    "¿Aplastado por las deudas? Puede haber salida legal.": "Crushed by debts? There may be a legal way out.",
+    "Consulta inicial confidencial y sin compromiso. Analizamos su caso en C/ Ramón y Cajal, 14 — Callosa d'en Sarrià.": "Initial confidential consultation without obligation. We analyze your case at C/ Ramón y Cajal, 14 — Callosa d'en Sarrià.",
+    "Preguntas frecuentes · Ley de Segunda Oportunidad": "Frequently asked questions · Second Opportunity Law",
+    "¿Cuál es el Órgano que conoce el proceso de Segunda Oportunidad?": "Which body is competent for the Second Opportunity process?",
+    "Las secciones de lo Mercantil de cada Tribunal territorial son las competentes debido a su especialización en la materia.": "The Commercial sections of each territorial Court are competent due to their specialization in the matter.",
+    "¿Puedo acogerme aunque tenga deudas con Hacienda?": "Can I apply even if I have debts with the Treasury?",
+    "Sí, dentro de los límites legales. La ley permite exonerar deudas con la Agencia Tributaria hasta 10.000 € y con la Seguridad Social hasta 10.000 €. Lo que supere esos umbrales no se exonera, pero sí puede incluirse en un plan de pagos. Le analizamos su deudas públicas concretas para ver qué porcentaje queda exonerado.": "Yes, within legal limits. The law allows discharging debts with the Tax Agency up to €10,000 and with the Social Security up to €10,000. What exceeds those thresholds is not discharged, but can be included in a payment plan. We analyze your specific public debts to see what percentage is discharged.",
+    "¿Perderé mi vivienda habitual si me acojo a la Segunda Oportunidad?": "Will I lose my primary home if I apply for the Second Opportunity?",
+    "No necesariamente. La vivienda habitual tiene una protección especial en el proceso. Existen mecanismos para mantenerla si puede asumir los pagos hipotecarios. Analizamos su situación patrimonial completa antes de iniciar el procedimiento para minimizar el impacto sobre su patrimonio esencial.": "Not necessarily. The primary home has special protection in the process. There are mechanisms to keep it if you can assume the mortgage payments. We analyze your complete asset situation before starting the procedure to minimize the impact on your essential assets.",
+
+    // Fiscal Section
+    "<span class=\"trule\"></span>Derecho Fiscal y Tributario · Callosa d'en Sarrià": "<span class=\"trule\"></span>Tax & Fiscal Law · Callosa d'en Sarrià",
+    "Planificación fiscal<br>y defensa tributaria —<br><i style=\"color:var(--gold)\">para particulares y empresas</i>": "Tax planning<br>and tax defense —<br><i style=\"color:var(--gold)\">for individuals and businesses</i>",
+    "Las gestorías convencionales se limitan a tramitar papeles. Nosotros analizamos, planificamos y defendemos activamente sus derechos frente a la Agencia Tributaria. Cobertura jurídica integral en inspecciones, recursos y optimización de impuestos.": "Conventional agencies limit themselves to processing papers. We analyze, plan and actively defend your rights against the Tax Agency. Comprehensive legal coverage in inspections, appeals and tax optimization.",
+    "IRPF — Renta y Planificación": "PIT — Income & Planning",
+    "Planificación estratégica anual para optimizar la carga fiscal. Confección y presentación de la declaración de la renta para particulares y trabajadores autónomos, aplicando todas las deducciones vigentes.": "Annual strategic planning to optimize the tax burden. Preparation and submission of the income tax return for individuals and self-employed workers, applying all current deductions.",
+    "IVA e Impuestos de Actividad": "VAT & Business Taxes",
+    "Liquidaciones periódicas (trimestrales y anuales) para autónomos y pymes. Asesoramiento sobre el régimen fiscal idóneo (estimación directa u objetiva) para su negocio.": "Periodic liquidations (quarterly and annual) for self-employed and SMEs. Advice on the ideal tax regime (direct or objective estimation) for your business.",
+    "Sucesiones, Donaciones e ITP": "Inheritances, Donations & ITP",
+    "Liquidación óptima del Impuesto de Sucesiones y Donaciones, Impuesto de Transmisiones Patrimoniales (ITP) y Actos Jurídicos Documentados (AJD) en operaciones inmobiliarias y transmisiones de bienes.": "Optimal settlement of the Inheritance and Gift Tax, Property Transfer Tax (ITP) and Documented Legal Acts (AJD) in real estate operations and property transfers.",
+    "Inspecciones y Recursos AEAT": "AEAT Inspections & Appeals",
+    "Asistencia técnica en comprobaciones fiscales e inspecciones. Redacción de recursos de reposición y reclamaciones económico-administrativas. Defensa letrada ante los Tribunales de lo Contencioso-Administrativo.": "Technical assistance in tax checks and inspections. Drafting of appeals for reversal and economic-administrative claims. Legal defense before the Administrative Courts.",
+    "Planificación Fiscal Patrimonial": "Asset Tax Planning",
+    "Estructuras de tenencia de activos, reorganización de patrimonios familiares o empresariales y optimización fiscal en donaciones y legados preventivos.": "Asset holding structures, reorganization of family or business assets and tax optimization in donations and preventive legacies.",
+    "¿Tiene una inspección o una liquidación de impuestos pendiente?": "Do you have a pending tax inspection or tax assessment?",
+    "Preguntas frecuentes · Derecho Fiscal": "Frequently asked questions · Tax Law",
+    "¿La asesoría fiscal es solo para empresas o también para particulares?": "Is tax advice only for businesses or also for individuals?",
+    "Para ambos. Confeccionamos declaraciones de Renta e Impuesto sobre el Patrimonio de particulares, liquidaciones de sucesiones y donaciones de familias, y gestionamos las obligaciones fiscales recurrentes (IVA, Sociedades, retenciones) de autónomos y pymes de la comarca.": "For both. We prepare Income and Wealth tax returns for individuals, inheritance and donation settlements for families, and manage recurring tax obligations (VAT, Corporate Tax, withholdings) for self-employed and local SMEs.",
+    "¿Cuál es la diferencia entre acudir a un despacho de abogados fiscales y a una gestoría?": "What is the difference between going to a tax law firm and an agency?",
+    "Las gestorías suelen mecanizar la presentación de declaraciones rutinarias. Como abogados especialistas en Derecho Tributario, aportamos un valor estratégico: diseñamos estructuras para la optimización y el ahorro fiscal, defendemos sus intereses de forma experta ante las inspecciones de la AEAT, recurrimos sanciones administrativamente y, si es preciso, acudimos a la vía judicial.": "Agencies tend to automate the filing of routine returns. As specialist lawyers in Tax Law, we provide strategic value: we design structures for optimization and tax savings, defend your interests expertly before AEAT inspections, appeal sanctions administratively and, if necessary, go to court.",
+
+    // Mercantil Section
+    "<span class=\"trule\"></span>Derecho Mercantil y Societario · Marina Baixa": "<span class=\"trule\"></span>Corporate & Commercial Law · Marina Baixa",
+    "Seguridad jurídica<br>para su negocio —<br><i style=\"color:var(--gold)\">en cada fase de crecimiento</i>": "Legal safety<br>for your business —<br><i style=\"color:var(--gold)\">in every growth phase</i>",
+    "Acompañamos a emprendedores, pymes y grandes firmas en su desarrollo mercantil. Desde la constitución y el diseño de la estructura societaria hasta la defensa en conflictos corporativos, reclamaciones comerciales y procesos de insolvencia concursal.": "We accompany entrepreneurs, SMEs and large firms in their commercial development. From incorporation and corporate structure design to defense in corporate conflicts, commercial claims and bankruptcy insolvency processes.",
+    "Constitución de Sociedades": "Company Incorporation",
+    "Constitución de SL y SA, redacción de estatutos sociales a medida, pactos de socios para proteger a los fundadores y tramitación registral. Le asesoramos sobre la estructura idónea para iniciar su proyecto con garantías.": "Incorporation of SL and SA, custom drafting of articles of association, shareholder agreements to protect founders and registration. We advise you on the ideal structure to start your project with guarantees.",
+    "Operaciones Societarias y Contratos": "Corporate Operations & Contracts",
+    "Ampliaciones de capital, fusiones, transformaciones y escisiones de sociedades. Redacción y análisis minucioso de contratos mercantiles, acuerdos de distribución, franquicias y pactos de confidencialidad.": "Capital increases, mergers, transformations and spin-offs of companies. Drafting and meticulous analysis of commercial contracts, distribution agreements, franchises and confidentiality agreements.",
+    "Asesoramiento Continuo a Pymes": "Ongoing Support for SMEs",
+    "Soporte legal continuado a autónomos y pequeñas empresas. Prevención de conflictos societarios, cumplimiento normativo interno, contratación empresarial y arrendamientos de local comercial.": "Continuous legal support to self-employed and small businesses. Prevention of corporate conflicts, internal regulatory compliance, business contracting and commercial premises leases.",
+    "Recobro de Deudas y Reclamaciones": "Debt Recovery & Claims",
+    "Reclamación extrajudicial y judicial de impagos, facturas y deudas comerciales. Interposición de procedimientos monitorios rápidos, juicios ordinarios e instamos la ejecución judicial de deudas.": "Extrajudicial and judicial claim of defaults, invoices and commercial debts. Interposition of quick payment order procedures, ordinary trials and we request judicial execution of debts.",
+    "Concurso de Acreedores para Empresas": "Bankruptcy Proceedings for Companies",
+    "Gestión y tramitación integral del concurso de acreedores de sociedades mercantiles. Preparamos el expediente de insolvencia, defendemos a la empresa frente a incidentes y protegemos la responsabilidad personal de sus administradores.": "Comprehensive management and processing of corporate bankruptcy proceedings. We prepare the insolvency file, defend the company against incidents and protect the personal liability of its administrators.",
+    "¿Necesita constituir una sociedad o reclamar facturas impagadas?": "Do you need to incorporate a company or claim unpaid invoices?",
+    "Consúltenos sin compromiso. Atendemos en nuestro despacho de Callosa d'en Sarrià o por videollamada.": "Consult us without obligation. We assist you at our office in Callosa d'en Sarrià or by video call.",
+    "Preguntas frecuentes · Derecho Mercantil": "Frequently asked questions · Corporate Law",
+    "¿Cuáles son las ventajas de contar con un abogado mercantil de forma continua?": "What are the advantages of having a corporate lawyer continuously?",
+    "Previene litigios costosos. Un abogado mercantil analiza de forma constante sus contratos de proveedores, clientes, arrendamientos y relaciones entre socios, garantizando que el crecimiento de su negocio se realice siempre sobre bases jurídicas sólidas y libres de riesgos.": "Prevents costly litigation. A corporate lawyer constantly analyzes your contracts with suppliers, clients, leases and relations between partners, ensuring that the growth of your business is always carried out on solid legal foundations and free of risks.",
+    "¿Cuándo se debe solicitar el concurso de acreedores de una empresa?": "When should a company file for bankruptcy?",
+    "La ley establece que la solicitud de concurso debe presentarse dentro de los dos meses siguientes a la fecha en que se hubiera conocido o debido conocer el estado de insolvencia. Presentar el concurso a tiempo evita que se califique como culpable y que los administradores respondan con su propio patrimonio.": "The law establishes that the bankruptcy application must be filed within two months following the date on which the state of insolvency was known or should have been known. Filing for bankruptcy in time prevents it from being classified as fault and that directors respond with their own assets.",
+
+    // Team Section
+    "El equipo<br><i style=\"color:var(--gold)\">que le representa</i>": "The team<br><i style=\"color:var(--gold)\">representing you</i>",
+    "Tres abogados colegiados en el ICALI. Presencia ininterrumpida en Callosa d'en Sarrià desde 1989.": "Three lawyers registered at ICALI. Uninterrupted presence in Callosa d'en Sarrià since 1989.",
+    "Vicente Javier Saval Galiana": "Vicente Javier Saval Galiana",
+    "Abogado · Colegiado desde 1989": "Attorney · Member since 1989",
+    "Mª Belén García Espasa": "Mª Belén García Espasa",
+    "Abogada · Colegiada desde 1996": "Lawyer · Member since 1996",
+    "José Saval García": "José Saval García",
+    "Abogado · Colegiado desde 2024": "Attorney · Member since 2024",
+
+    // Coverage Section
+    "Ámbito de actuación": "Scope of action",
+    "Servicio jurídico cercano<br><i style=\"color:var(--gold)\">y altamente especializado</i>": "Close legal service<br><i style=\"color:var(--gold)\">and highly specialized</i>",
+    "Saval García Abogados es una firma de referencia especializada en múltiples áreas del derecho. Con sede en <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, Ofrecemos una sólida cobertura legal a empresas y particulares de <strong>Altea, La Nucía, Benidorm, Calpe</strong> y toda la Marina Baixa. Nuestro compromiso es garantizar una defensa rigurosa y la más alta representación técnica.": "Saval García Abogados is a benchmark firm specialized in multiple areas of law. Based in <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, we offer solid legal coverage to businesses and individuals in <strong>Altea, La Nucía, Benidorm, Calpe</strong> and the entire Marina Baixa. Our commitment is to guarantee a rigorous defense and the highest technical representation.",
+    "Saval García Abogados es una firma de referencia especializada en múltiples áreas del derecho. Con sede en <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, ofrecemos una sólida cobertura legal a empresas y particulares de <strong>Altea, La Nucía, Benidorm, Calpe</strong> y toda la Marina Baixa. Nuestro compromiso es garantizar una defensa rigurosa y la más alta representación técnica.": "Saval García Abogados is a benchmark firm specialized in multiple areas of law. Based in <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, we offer solid legal coverage to businesses and individuals in <strong>Altea, La Nucía, Benidorm, Calpe</strong> and the entire Marina Baixa. Our commitment is to guarantee a rigorous defense and the highest technical representation.",
+
+    // Contact Section
+    "Contacto directo y confidencial": "Direct and confidential contact",
+    "Hablemos<br><i style=\"color:var(--gold)\">de su caso</i>": "Let's talk<br><i style=\"color:var(--gold)\">about your case</i>",
+    "Sabemos que detrás de cada consulta hay una preocupación importante. Le atenderemos de forma personal, con total discreción y rigor técnico. Atendemos presencialmente en nuestro despacho o por videollamada para su máxima comodidad.": "We know that behind each consultation there is an important concern. We will assist you personally, with total discretion and technical rigor. We assist you in person at our office or by video call for your maximum convenience.",
+    "Teléfono": "Phone",
+    "Despacho": "Office",
+    "Horario": "Hours",
+    "Lunes a Viernes · 9:00 – 17:00 h": "Monday to Friday · 9:00 AM – 5:00 PM",
+    "Abrir en Google Maps →": "Open in Google Maps →",
+    "Correo electrónico": "Email",
+
+    // Footer
+    "<b class=\"font-semibold\" style=\"color:rgba(240,232,213,.95)\">Saval García</b> Abogados · Callosa d'en Sarrià": "<b class=\"font-semibold\" style=\"color:rgba(240,232,213,.95)\">Saval García</b> Lawyers · Callosa d'en Sarrià",
+    "© 2026 · C/ Ramón y Cajal, 14 · 03510 Callosa d'en Sarrià · <span itemprop=\"addressRegion\">Alicante</span>": "© 2026 · C/ Ramón y Cajal, 14 · 03510 Callosa d'en Sarrià · <span itemprop=\"addressRegion\">Alicante</span>"
+  };
+
+  // Build the reverse mapping dynamically
+  const dictEnToEs = {};
+  const normalizedEsToEn = {};
+  const normalizedEnToEs = {};
+
+  function normalizeStr(str) {
+    if (!str) return '';
+    return str.replace(/\s+/g, ' ').trim();
+  }
+
+  // Pre-normalize keys and values for bulletproof matching
+  Object.keys(dictEsToEn).forEach(key => {
+    const normKey = normalizeStr(key);
+    const normVal = normalizeStr(dictEsToEn[key]);
+    normalizedEsToEn[normKey] = normVal;
+    normalizedEnToEs[normVal] = normKey;
+  });
+
+  let currentLang = localStorage.getItem('lang') || 'es';
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    const dict = lang === 'en' ? normalizedEsToEn : normalizedEnToEs;
+
+    // Translate standard text tags
+    const tags = document.querySelectorAll('p, h1, h2, h3, a, span, button, strong, i, address, b');
+    tags.forEach(el => {
+      // 1. First attempt: match complete innerHTML
+      let rawHTML = el.innerHTML;
+      let normHTML = normalizeStr(rawHTML);
+      if (dict[normHTML]) {
+        el.innerHTML = dict[normHTML];
+        return;
+      }
+
+      // 2. Second attempt: match individual child text nodes (useful for elements with text + icons/SVGs like FAQ buttons)
+      el.childNodes.forEach(child => {
+        if (child.nodeType === 3) { // Text node
+          let rawText = child.nodeValue;
+          let normText = normalizeStr(rawText);
+          if (dict[normText]) {
+            const matchStart = rawText.match(/^\s*/)[0];
+            const matchEnd = rawText.match(/\s*$/)[0];
+            child.nodeValue = matchStart + dict[normText] + matchEnd;
+          }
+        }
+      });
+    });
+
+    // Translate form inputs placeholders
+    const placeholders = {
+      'Su nombre': 'Your name',
+      'Teléfono': 'Phone',
+      'Mensaje': 'Message'
+    };
+    const normPlaceholders = {};
+    Object.keys(placeholders).forEach(k => {
+      normPlaceholders[normalizeStr(k)] = normalizeStr(placeholders[k]);
+    });
+    const normPlaceholdersReverse = {};
+    Object.keys(normPlaceholders).forEach(k => {
+      normPlaceholdersReverse[normPlaceholders[k]] = k;
+    });
+
+    const plDict = lang === 'en' ? normPlaceholders : normPlaceholdersReverse;
+
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(el => {
+      const pl = el.getAttribute('placeholder');
+      if (pl) {
+        const normPl = normalizeStr(pl);
+        if (plDict[normPl]) {
+          el.setAttribute('placeholder', plDict[normPl]);
+        }
+      }
+    });
+
+    // Update document head title
+    if (lang === 'en') {
+      document.title = "Saval García Lawyers | Callosa d'en Sarrià | Altea | Benidorm";
+    } else {
+      document.title = "Saval García Abogados | Callosa d'en Sarrià | Altea | Benidorm";
+    }
+
+    // Update translation button text and flag icon
+    const flagIconContainer = document.getElementById('lang-flag-icon');
+    const langBtnText = document.querySelector('.lang-btn-text');
+
+    const ukFlag = `<svg viewBox="0 0 24 24" style="border-radius:50%;width:16px;height:16px;display:block">
+      <clipPath id="uk-clip"><circle cx="12" cy="12" r="12"/></clipPath>
+      <g clip-path="url(#uk-clip)">
+        <rect width="24" height="24" fill="#00247D"/>
+        <line x1="0" y1="0" x2="24" y2="24" stroke="#FFF" stroke-width="3"/>
+        <line x1="24" y1="0" x2="0" y2="24" stroke="#FFF" stroke-width="3"/>
+        <line x1="0" y1="0" x2="24" y2="24" stroke="#CF142B" stroke-width="1.8"/>
+        <line x1="24" y1="0" x2="0" y2="24" stroke="#CF142B" stroke-width="1.8"/>
+        <line x1="12" y1="0" x2="12" y2="24" stroke="#FFF" stroke-width="4.5"/>
+        <line x1="0" y1="12" x2="24" y2="12" stroke="#FFF" stroke-width="4.5"/>
+        <line x1="12" y1="0" x2="12" y2="24" stroke="#CF142B" stroke-width="2.5"/>
+        <line x1="0" y1="12" x2="24" y2="12" stroke="#CF142B" stroke-width="2.5"/>
+      </g>
+    </svg>`;
+
+    const esFlag = `<svg viewBox="0 0 24 24" style="border-radius:50%;width:16px;height:16px;display:block">
+      <clipPath id="es-clip"><circle cx="12" cy="12" r="12"/></clipPath>
+      <g clip-path="url(#es-clip)">
+        <rect x="0" y="0" width="24" height="6" fill="#AD1519"/>
+        <rect x="0" y="6" width="24" height="12" fill="#FABD00"/>
+        <rect x="0" y="18" width="24" height="6" fill="#AD1519"/>
+      </g>
+    </svg>`;
+
+    if (langBtnText) {
+      langBtnText.textContent = lang === 'es' ? 'Translate to English' : 'Traducir a español';
+    }
+    if (flagIconContainer) {
+      flagIconContainer.innerHTML = lang === 'es' ? ukFlag : esFlag;
+    }
+  }
+
+  window.toggleLanguage = function() {
+    const nextLang = currentLang === 'es' ? 'en' : 'es';
+    applyLanguage(nextLang);
+  };
+
+  // Run immediately on DOMContentLoaded or right away if already loaded (fixes race condition)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLanguage(currentLang);
+    });
+  } else {
+    applyLanguage(currentLang);
+  }
 </script>
 </body>
 </html>
