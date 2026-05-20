@@ -294,6 +294,22 @@
     .wa{position:fixed;bottom:1.6rem;right:1.6rem;z-index:500;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,.38);text-decoration:none;transition:transform .2s}
     .wa:hover{transform:scale(1.1)}
     .wa svg{width:26px;height:26px;fill:#fff}
+
+    /* mobile nav overlay */
+    #mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: var(--ivory);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #mobile-nav.active {
+      transform: translateX(0);
+    }
   </style>
 </head>
 <body>
@@ -331,6 +347,14 @@
     </ul>
   </div>
   <div class="navbar-end gap-2">
+    <a href="https://wa.me/34614635342?text=Hola%2C%20quer%C3%ADa%20consultar%20un%20caso."
+       target="_blank" rel="noopener"
+       class="hidden lg:inline-flex items-center gap-2 text-[.67rem] font-medium tracking-[.12em] uppercase px-5 py-2 transition-colors"
+       style="background:#25D366;color:white"
+       onmouseover="this.style.background='#20ba5a'" onmouseout="this.style.background='#25D366'">
+      <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
     <a href="tel:+34614635342"
        class="hidden lg:inline-flex items-center gap-2 text-[.67rem] font-medium tracking-[.12em] uppercase px-5 py-2 transition-colors"
        style="background:var(--carbon);color:var(--sand)"
@@ -338,30 +362,50 @@
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       614 63 53 42
     </a>
-    <div class="dropdown dropdown-end lg:hidden">
-      <label tabindex="0" class="btn btn-ghost btn-sm px-2">
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </label>
-      <ul tabindex="0" class="dropdown-content menu p-3 shadow-lg mt-2 w-64 text-sm"
-          style="background:var(--ivory);border:1px solid rgba(15,28,53,.1)">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#civil-familia">Civil &amp; Familia</a></li>
-        <li><a href="#penal">Derecho Penal</a></li>
-        <li><a href="#laboral">Derecho Laboral</a></li>
-        <li><a href="#segunda-oportunidad">Segunda Oportunidad (LSO)</a></li>
-        <li><a href="#fiscal">Derecho Fiscal</a></li>
-        <li><a href="#mercantil">Derecho Mercantil</a></li>
-        <li><a href="#nosotros">El equipo</a></li>
-        <li><a href="#cobertura">Zona</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li class="mt-2"><a href="tel:+34614635342" class="font-medium flex items-center gap-2" style="color:var(--gold)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> 614 63 53 42</a></li>
-      </ul>
-    </div>
+    <a href="https://wa.me/34614635342?text=Hola%2C%20quer%C3%ADa%20consultar%20un%20caso."
+       target="_blank" rel="noopener"
+       class="inline-flex lg:hidden items-center justify-center w-8 h-8 rounded-full transition-colors mr-1"
+       style="background:#25D366;color:white"
+       aria-label="WhatsApp">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <button id="mobile-menu-btn" class="btn btn-ghost btn-sm px-2 lg:hidden relative z-50" aria-label="Menú">
+      <svg id="hamburger-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="close-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
   </div>
 </div>
 </nav>
+
+<!-- Menú Móvil Overlay -->
+<div id="mobile-nav" class="lg:hidden flex flex-col justify-between">
+  <div class="flex flex-col gap-6 text-xl serif font-normal px-[8vw] pt-24">
+    <a href="#servicios" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Servicios</a>
+    <a href="#civil-familia" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Civil &amp; Familia</a>
+    <a href="#penal" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Derecho Penal</a>
+    <a href="#laboral" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Derecho Laboral</a>
+    <a href="#segunda-oportunidad" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Segunda Oportunidad (LSO)</a>
+    <a href="#fiscal" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Derecho Fiscal</a>
+    <a href="#mercantil" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Derecho Mercantil</a>
+    <a href="#nosotros" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">El equipo</a>
+    <a href="#cobertura" class="mob-link py-2 border-b border-black/5 hover:text-[var(--gold)] transition-colors">Zona</a>
+    <a href="#contacto" class="mob-link py-2 hover:text-[var(--gold)] transition-colors">Contacto</a>
+  </div>
+  <div class="px-[8vw] pb-12 flex flex-col gap-3">
+    <a href="tel:+34614635342" class="flex items-center justify-center gap-2 text-xs font-semibold tracking-[.12em] uppercase py-4 rounded-lg text-white" style="background:var(--carbon)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      Llamar ahora
+    </a>
+    <a href="https://wa.me/34614635342?text=Hola%2C%20quer%C3%ADa%20consultar%20un%20caso." target="_blank" rel="noopener" class="flex items-center justify-center gap-2 text-xs font-semibold tracking-[.12em] uppercase py-4 rounded-lg text-white" style="background:#25D366">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
 
 
 <!-- ══════════ HERO ══════════ -->
@@ -379,7 +423,7 @@
       </p>
       
       <h1 class="a2 serif font-normal leading-[1.04] mb-7" style="color:var(--sand);font-size:clamp(3rem,5vw,5.5rem)">
-        Abogados en<br>Callosa d'en Sarrià,<br><i style="color:var(--sand)">Altea y Benidorm</i>
+        Abogados en<br>Callosa d'en Sarrià,<br><span>Altea y Benidorm</span>
       </h1>
       
       <p class="a3 text-base sm:text-lg font-light leading-[1.8] mb-10 text-white/70">
@@ -1033,7 +1077,7 @@
       Servicio jurídico cercano<br><i style="color:var(--gold)">y altamente especializado</i>
     </h2>
     <p class="text-sm font-light leading-[1.8] mb-10 mx-auto max-w-2xl" style="color:var(--muted)">
-      Saval García Abogados es una firma de referencia especializada en múltiples áreas del derecho. Con sede en <strong class="font-semibold" style="color:var(--carbon)">Callosa d'en Sarrià</strong>, ofrecemos una sólida cobertura legal a empresas y particulares de <strong>Altea, La Nucía, Benidorm, Calpe</strong> y toda la Marina Baixa. Nuestro compromiso es garantizar una defensa rigurosa y la más alta representación técnica en los juzgados de Alicante y la comarca.
+      Saval García Abogados es una firma de referencia especializada en múltiples áreas del derecho. Con sede en <strong class="font-semibold" style="color:var(--carbon)">Callosa d'en Sarrià</strong>, ofrecemos una sólida cobertura legal a empresas y particulares de <strong>Altea, La Nucía, Benidorm, Calpe</strong> y toda la Marina Baixa. Nuestro compromiso es garantizar una defensa rigurosa y la más alta representación técnica.
     </p>
     <div class="flex flex-wrap justify-center gap-2">
       <span class="tpill hi">Callosa d'en Sarrià</span>
@@ -1103,6 +1147,16 @@
         <div>
           <p class="text-[.6rem] font-semibold tracking-[.15em] uppercase mb-1" style="color:var(--muted)">Teléfono</p>
           <a href="tel:+34614635342" class="text-xl font-light hover:text-[var(--gold)] transition-colors" style="color:var(--sand)">+34 614 63 53 42</a>
+        </div>
+      </div>
+      
+      <div class="flex items-start gap-4 mb-8">
+        <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full" style="background:rgba(37,211,102,.15);color:#25D366">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <p class="text-[.6rem] font-semibold tracking-[.15em] uppercase mb-1" style="color:var(--muted)">WhatsApp</p>
+          <a href="https://wa.me/34614635342?text=Hola%2C%20quer%C3%ADa%20consultar%20un%20caso." target="_blank" rel="noopener" class="text-xl font-light hover:text-[#25D366] transition-colors" style="color:var(--sand)">+34 614 63 53 42</a>
         </div>
       </div>
       
@@ -1221,6 +1275,42 @@
       });
     },{threshold:0.4});
     sects.forEach(s => io.observe(s));
+  })();
+
+  /* Mobile menu logic */
+  (function(){
+    const btn = document.getElementById('mobile-menu-btn');
+    const nav = document.getElementById('mobile-nav');
+    const burgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const links = document.querySelectorAll('.mob-link');
+    
+    if(!btn || !nav) return;
+    
+    function toggle() {
+      const open = nav.classList.contains('active');
+      if (open) {
+        nav.classList.remove('active');
+        burgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.style.overflow = '';
+      } else {
+        nav.classList.add('active');
+        burgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    btn.addEventListener('click', toggle);
+    links.forEach(l => {
+      l.addEventListener('click', () => {
+        nav.classList.remove('active');
+        burgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    });
   })();
 </script>
 </body>
