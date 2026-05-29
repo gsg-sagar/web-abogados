@@ -492,7 +492,7 @@
     <a href="#inicio" class="flex items-center gap-3" aria-label="Saval García Abogados — Inicio">
       <div class="w-11 h-11 flex-shrink-0 flex items-center justify-center"
            style="background:var(--carbon);border:1.5px solid var(--gold)">
-        <img src="images/logo.jpg" alt="Logo Saval García" class="w-full h-full object-cover">
+        <img src="images/logo.webp" alt="Logo Saval García" class="w-full h-full object-cover">
       </div>
       <div class="leading-tight">
         <span class="block serif font-bold text-[.92rem]" style="color:var(--carbon)">Saval García</span>
@@ -1208,7 +1208,7 @@
       <div class="sv-card group !p-0 overflow-hidden flex flex-col h-full" style="background:var(--carbon); border-color:rgba(201,168,76,.2)">
         <div class="w-full h-[380px] sm:h-[420px] flex items-center justify-center flex-col gap-3 relative overflow-hidden"
              style="background:#131f38;border-bottom:2px solid var(--gold)">
-          <img src="images/javier.jpeg" alt="Vicente Javier Saval Galiana" class="w-full h-full object-cover object-[50%_15%] transition-transform duration-700 group-hover:scale-105">
+          <img src="images/javier.webp" alt="Vicente Javier Saval Galiana" class="w-full h-full object-cover object-[50%_15%] transition-transform duration-700 group-hover:scale-105" loading="lazy">
           <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to top, rgba(15,28,53,0.6) 0%, transparent 40%);"></div>
         </div>
         <div class="p-6 flex-grow relative z-10">
@@ -1219,7 +1219,7 @@
       <div class="sv-card group !p-0 overflow-hidden flex flex-col h-full" style="background:var(--carbon); border-color:rgba(201,168,76,.2)">
         <div class="w-full h-[380px] sm:h-[420px] flex items-center justify-center flex-col gap-3 relative overflow-hidden"
              style="background:#131f38;border-bottom:2px solid var(--gold)">
-          <img src="images/belen.jpeg" alt="Mª Belén García Espasa" class="w-full h-full object-cover object-[50%_15%] transition-transform duration-700 group-hover:scale-105">
+          <img src="images/belen.webp" alt="Mª Belén García Espasa" class="w-full h-full object-cover object-[50%_15%] transition-transform duration-700 group-hover:scale-105" loading="lazy">
           <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to top, rgba(15,28,53,0.6) 0%, transparent 40%);"></div>
         </div>
         <div class="p-6 flex-grow relative z-10">
@@ -1230,7 +1230,7 @@
       <div class="sv-card group !p-0 overflow-hidden flex flex-col h-full" style="background:var(--carbon); border-color:rgba(201,168,76,.2)">
         <div class="w-full h-[380px] sm:h-[420px] flex items-center justify-center flex-col gap-3 relative overflow-hidden"
              style="background:#131f38;border-bottom:2px solid var(--gold)">
-          <img src="images/jose2.jpg" alt="José Saval García" class="w-full h-full object-cover object-[50%_15%] transition-transform duration-700 group-hover:scale-105">
+          <img src="images/jose2.webp" alt="José Saval García" class="w-full h-full object-cover object-[50%_15%] transition-transform duration-700 group-hover:scale-105" loading="lazy">
           <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to top, rgba(15,28,53,0.6) 0%, transparent 40%);"></div>
         </div>
         <div class="p-6 flex-grow relative z-10">
@@ -1378,7 +1378,7 @@
   <div class="flex items-center gap-3">
     <div class="w-8 h-8 flex items-center justify-center"
          style="border:1px solid rgba(201,168,76,.35);background:rgba(255,255,255,.02)">
-      <img src="images/logo.jpg" alt="Logo Saval García" class="w-full h-full object-cover">
+      <img src="images/logo.webp" alt="Logo Saval García" class="w-full h-full object-cover" loading="lazy">
     </div>
     <span class="serif text-[.82rem]" style="color:rgba(240,232,213,.75)">
       <b class="font-semibold" style="color:rgba(240,232,213,.95)">Saval García</b> Abogados · Callosa d'en Sarrià
@@ -1884,7 +1884,7 @@
 <div id="cookie-banner" class="fixed bottom-24 left-4 right-4 sm:left-auto sm:right-6 z-50 transition-all duration-500 translate-y-[200%] opacity-0 sm:max-w-md" style="pointer-events:none;">
   <div class="p-5 sm:p-6 rounded-xl shadow-[0_10px_50px_rgba(0,0,0,0.25)]" style="background:var(--carbon); border:1px solid rgba(201,168,76,.25); pointer-events:auto;">
     <p class="text-xs sm:text-sm font-light leading-relaxed mb-4" style="color:rgba(240,232,213,.8)">
-      🍪 Utilizamos cookies propias y de terceros para fines analíticos y para asegurar que tengas la mejor experiencia en nuestra web.
+      🍪 Utilizamos cookies propias y de terceros para fines analíticos y para asegurar que tenga la mejor experiencia en nuestra web.
       <a href="Privacy_Policy_Saval_Garcia_Abogados_Styled.pdf" target="_blank" style="color:var(--gold)" class="hover:underline font-medium">Leer más</a>.
     </p>
     <div class="flex gap-3">
@@ -1896,8 +1896,7 @@
   function acceptCookies() {
     localStorage.setItem('cookies_accepted', 'true');
     const banner = document.getElementById('cookie-banner');
-    banner.classList.add('translate-y-[200%]', 'opacity-0');
-    banner.style.pointerEvents = 'none';
+    banner.style.display = 'none';
   }
   window.addEventListener('load', () => {
     if (!localStorage.getItem('cookies_accepted')) {
