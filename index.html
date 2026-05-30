@@ -239,6 +239,9 @@
       color: var(--gold2) !important;
       border-bottom-color: var(--gold2) !important;
     }
+    .hero-stat-value{height:2.75rem;display:flex;align-items:flex-end}
+    .sv-body{display:flex;flex-direction:column;height:100%}
+    .sv-body .sv-p:first-of-type{flex:1}
 
     .sv-card { background:rgba(255,255,255,0.02); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all .4s ease; box-shadow:0 8px 32px rgba(0,0,0,.15); position: relative; overflow: hidden; }
     .sv-card::before{
@@ -616,15 +619,15 @@
 
       <div class="flex flex-wrap items-baseline gap-12 sm:gap-24">
         <div class="a4" style="animation-delay:0.8s">
-          <span class="block serif font-normal leading-none mb-2" style="font-size:2.5rem;color:var(--sand)">+35</span>
+          <span class="hero-stat-value serif font-normal leading-none mb-2" style="font-size:2.5rem;color:var(--sand)">+35</span>
           <span class="block text-[.6rem] font-medium tracking-[.15em] uppercase text-white/40">Años de ejercicio</span>
         </div>
         <div class="a4" style="animation-delay:0.9s">
-          <span class="block serif font-normal leading-none mb-2" style="font-size:2.5rem;color:var(--sand)">7</span>
+          <span class="hero-stat-value serif font-normal leading-none mb-2" style="font-size:2.5rem;color:var(--sand)">6</span>
           <span class="block text-[.6rem] font-medium tracking-[.15em] uppercase text-white/40">Áreas de especialización</span>
         </div>
         <div class="a4" style="animation-delay:1.0s">
-          <span class="block serif font-normal leading-none mb-2" style="font-size:2.1rem;color:var(--sand);text-transform:lowercase">(bilingual)</span>
+          <span class="hero-stat-value serif font-normal leading-none mb-2" style="font-size:2.1rem;color:var(--sand);text-transform:lowercase">(bilingual)</span>
           <span class="block text-[.6rem] font-medium tracking-[.15em] uppercase text-white/40">we speak english</span>
         </div>
       </div>
@@ -651,59 +654,53 @@
     <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 reveal">
 
       <!-- 01 Civil y Familia -->
-      <article class="sv p-8">
+      <article class="sv p-8 sv-body">
       <p class="sv-n serif text-[.68rem] font-bold tracking-[.06em] mb-3" style="color:var(--gold)">01</p>
-      <div class="sv-b w-5 h-px mb-3" style="background:rgba(15,28,53,.18)"></div>
       <h3 class="sv-h serif text-xl font-semibold mb-2" style="color:var(--carbon)">Derecho Civil y Familia</h3>
       <p class="sv-p text-sm font-light leading-[1.75] mb-4" style="color:var(--muted)">
         Aceptación e impugnación de herencias, redacción de contratos de compraventa y arrendamientos. Divorcios, convenios reguladores y reclamaciones de cantidad ante los Tribunales.
       </p>
-      <a href="#civil-familia" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold);border-bottom:1px solid var(--gold)">Ver detalle →</a>
+      <a href="#civil-familia" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold)">Ver detalle →</a>
     </article>
 
     <!-- 02 Segunda Oportunidad -->
-    <article class="sv p-8">
+    <article class="sv p-8 sv-body">
       <p class="sv-n serif text-[.68rem] font-bold tracking-[.06em] mb-3" style="color:var(--gold)">02</p>
-      <div class="sv-b w-5 h-px mb-3" style="background:rgba(15,28,53,.18)"></div>
       <h3 class="sv-h serif text-xl font-semibold mb-2" style="color:var(--carbon)">Ley de Segunda Oportunidad</h3>
       <p class="sv-p text-sm font-light leading-[1.75] mb-4" style="color:var(--muted)">Cancelación de deudas para particulares, autónomos y empresas insolventes. Gestionamos el concurso de acreedores de principio a fin para que pueda empezar de cero.</p>
-      <a href="#segunda-oportunidad" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold);border-bottom:1px solid var(--gold)">Ver detalle →</a>
+      <a href="#segunda-oportunidad" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold)">Ver detalle →</a>
     </article>
 
     <!-- 03 Penal -->
-    <article class="sv p-8">
+    <article class="sv p-8 sv-body">
       <p class="sv-n serif text-[.68rem] font-bold tracking-[.06em] mb-3" style="color:var(--gold)">03</p>
-      <div class="sv-b w-5 h-px mb-3" style="background:rgba(15,28,53,.18)"></div>
       <h3 class="sv-h serif text-xl font-semibold mb-2" style="color:var(--carbon)">Derecho Penal</h3>
       <p class="sv-p text-sm font-light leading-[1.75] mb-4" style="color:var(--muted)">Asistencia al detenido en comisaría y defensa en juicio. Delitos económicos, contra el patrimonio, violencia doméstica, tráfico. Representamos también a víctimas y acusación particular.</p>
-      <a href="#penal" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold);border-bottom:1px solid var(--gold)">Ver detalle →</a>
+      <a href="#penal" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold)">Ver detalle →</a>
     </article>
 
     <!-- 04 Laboral -->
-    <article class="sv p-8">
+    <article class="sv p-8 sv-body">
       <p class="sv-n serif text-[.68rem] font-bold tracking-[.06em] mb-3" style="color:var(--gold)">04</p>
-      <div class="sv-b w-5 h-px mb-3" style="background:rgba(15,28,53,.18)"></div>
       <h3 class="sv-h serif text-xl font-semibold mb-2" style="color:var(--carbon)">Derecho Laboral</h3>
       <p class="sv-p text-sm font-light leading-[1.75] mb-4" style="color:var(--muted)">Despidos improcedentes y nulos, reclamación de salarios e indemnizaciones, recursos contra la Seguridad Social. Tanto trabajadores como empresas. Actos de conciliación y juicios ante los Tribunales.</p>
-      <a href="#laboral" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold);border-bottom:1px solid var(--gold)">Ver detalle →</a>
+      <a href="#laboral" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold)">Ver detalle →</a>
     </article>
 
     <!-- 05 Fiscal -->
-    <article class="sv p-8">
+    <article class="sv p-8 sv-body">
       <p class="sv-n serif text-[.68rem] font-bold tracking-[.06em] mb-3" style="color:var(--gold)">05</p>
-      <div class="sv-b w-5 h-px mb-3" style="background:rgba(15,28,53,.18)"></div>
       <h3 class="sv-h serif text-xl font-semibold mb-2" style="color:var(--carbon)">Derecho Fiscal</h3>
       <p class="sv-p text-sm font-light leading-[1.75] mb-4" style="color:var(--muted)">IRPF, IVA, liquidación de herencias e impuestos locales y defensa activa ante inspecciones y sanciones de la AEAT.</p>
-      <a href="#fiscal" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold);border-bottom:1px solid var(--gold)">Ver detalle →</a>
+      <a href="#fiscal" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold)">Ver detalle →</a>
     </article>
 
     <!-- 06 Mercantil -->
-    <article class="sv p-8">
+    <article class="sv p-8 sv-body">
       <p class="sv-n serif text-[.68rem] font-bold tracking-[.06em] mb-3" style="color:var(--gold)">06</p>
-      <div class="sv-b w-5 h-px mb-3" style="background:rgba(15,28,53,.18)"></div>
       <h3 class="sv-h serif text-xl font-semibold mb-2" style="color:var(--carbon)">Derecho Mercantil</h3>
       <p class="sv-p text-sm font-light leading-[1.75] mb-4" style="color:var(--muted)">Constitución de SL/SA, redacción de contratos, operaciones societarias, recobro de deudas y concurso de acreedores.</p>
-      <a href="#mercantil" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold);border-bottom:1px solid var(--gold)">Ver detalle →</a>
+      <a href="#mercantil" class="sv-p text-[.65rem] font-semibold tracking-[.12em] uppercase inline-block transition-colors pb-px" style="color:var(--gold)">Ver detalle →</a>
     </article>
 
     </div>
@@ -1431,16 +1428,33 @@
 </section>
 
 <script>
-  let currentReview = 0;
+  let currentReview = 1;
   const reviewsTrack = document.getElementById('reviews-track');
   const reviewDots = document.querySelectorAll('.review-dot');
-  const totalReviews = 4;
+  const originalReviewSlides = Array.from(reviewsTrack.children);
+  const totalReviews = originalReviewSlides.length;
   let autoPlayTimer;
+  let reviewCarouselReady = false;
+
+  function setReviewTransition(enabled) {
+    reviewsTrack.style.transition = enabled ? 'transform 500ms ease-out' : 'none';
+  }
+
+  function jumpReviewWithoutAnimation(index) {
+    currentReview = index;
+    setReviewTransition(false);
+    updateReviewCarousel();
+    reviewsTrack.offsetHeight;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setReviewTransition(true));
+    });
+  }
 
   function updateReviewCarousel() {
     reviewsTrack.style.transform = `translateX(-${currentReview * 100}%)`;
+    const dotIndex = (currentReview - 1 + totalReviews) % totalReviews;
     reviewDots.forEach((dot, index) => {
-      if (index === currentReview) {
+      if (index === dotIndex) {
         dot.style.background = 'var(--gold)';
         dot.style.width = '24px';
       } else {
@@ -1451,27 +1465,32 @@
   }
 
   function nextReview() {
-    currentReview = (currentReview + 1) % totalReviews;
+    if (!reviewCarouselReady) return;
+    currentReview += 1;
+    setReviewTransition(true);
     updateReviewCarousel();
     resetAutoPlay();
   }
 
   function prevReview() {
-    currentReview = (currentReview - 1 + totalReviews) % totalReviews;
+    if (!reviewCarouselReady) return;
+    currentReview -= 1;
+    setReviewTransition(true);
     updateReviewCarousel();
     resetAutoPlay();
   }
 
   function goToReview(index) {
-    currentReview = index;
+    if (!reviewCarouselReady) return;
+    currentReview = index + 1;
+    setReviewTransition(true);
     updateReviewCarousel();
     resetAutoPlay();
   }
 
   function startAutoPlay() {
     autoPlayTimer = setInterval(() => {
-      currentReview = (currentReview + 1) % totalReviews;
-      updateReviewCarousel();
+      nextReview();
     }, 5000);
   }
 
@@ -1480,10 +1499,40 @@
     startAutoPlay();
   }
 
-  window.addEventListener('load', () => {
+  function initReviewCarousel() {
+    if (reviewCarouselReady || !reviewsTrack || totalReviews === 0) return;
+
+    const firstClone = originalReviewSlides[0].cloneNode(true);
+    const lastClone = originalReviewSlides[totalReviews - 1].cloneNode(true);
+    firstClone.setAttribute('aria-hidden', 'true');
+    lastClone.setAttribute('aria-hidden', 'true');
+    reviewsTrack.appendChild(firstClone);
+    reviewsTrack.insertBefore(lastClone, originalReviewSlides[0]);
+
+    setReviewTransition(false);
     updateReviewCarousel();
+    reviewsTrack.offsetHeight;
+    reviewCarouselReady = true;
     startAutoPlay();
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setReviewTransition(true));
+    });
+  }
+
+  reviewsTrack.addEventListener('transitionend', (event) => {
+    if (event.target !== reviewsTrack || event.propertyName !== 'transform') return;
+
+    if (currentReview === totalReviews + 1) {
+      jumpReviewWithoutAnimation(1);
+    }
+
+    if (currentReview === 0) {
+      jumpReviewWithoutAnimation(totalReviews);
+    }
   });
+
+  initReviewCarousel();
 </script>
 
 
@@ -1919,6 +1968,20 @@
     "Saval García Abogados es una firma de referencia especializada en múltiples áreas del derecho. Con sede en <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, Ofrecemos una sólida cobertura legal a empresas y particulares de <strong>Altea la Vella, La Nucía, Polop, Calpe</strong> y toda la Marina Baixa. Nuestro compromiso es garantizar una defensa rigurosa y la más alta representación técnica.": "Saval García Abogados is a benchmark firm specialized in multiple areas of law. Based in <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, we offer solid legal coverage to businesses and individuals in <strong>Altea la Vella, La Nucía, Polop, Calpe</strong> and the entire Marina Baixa. Our commitment is to guarantee a rigorous defense and the highest technical representation.",
     "Saval García Abogados es una firma de referencia especializada en múltiples áreas del derecho. Con sede en <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, ofrecemos una sólida cobertura legal a empresas y particulares de <strong>Altea la Vella, La Nucía, Polop, Calpe</strong> y toda la Marina Baixa. Nuestro compromiso es garantizar una defensa rigurosa y la más alta representación técnica.": "Saval García Abogados is a benchmark firm specialized in multiple areas of law. Based in <strong class=\"font-semibold\" style=\"color:var(--carbon)\">Callosa d'en Sarrià</strong>, we offer solid legal coverage to businesses and individuals in <strong>Altea la Vella, La Nucía, Polop, Calpe</strong> and the entire Marina Baixa. Our commitment is to guarantee a rigorous defense and the highest technical representation.",
 
+    // Reviews Section
+    "Valoraciones de nuestros clientes": "Reviews from our clients",
+    "Opiniones Reales": "Real Reviews",
+    "en Google Reviews": "on Google Reviews",
+    "Reseña anterior": "Previous review",
+    "Siguiente reseña": "Next review",
+    "Ir a reseña 1": "Go to review 1",
+    "Ir a reseña 2": "Go to review 2",
+    "Ir a reseña 3": "Go to review 3",
+    "Ir a reseña 4": "Go to review 4",
+    "\"Buenos profesionales. Cien por cien recomendables.\"": "\"Good professionals. One hundred percent recommended.\"",
+    "\"Me ha ayudado de principio a fin en todo el proceso judicial. Siempre ha procurado darme toda la información necesaria. Lo aconsejo 100%.\"": "\"He helped me from start to finish throughout the legal process. He always made sure to give me all the necessary information. I recommend him 100%.\"",
+    "\"Gabinete jurídico serio, cercano y muy profesional y sobretodo resolutivo. Un acierto haberlos contratado en varios asuntos.\"": "\"A serious, approachable, highly professional and above all effective legal firm. Hiring them for several matters was the right choice.\"",
+
     // Contact Section
     "Contacto directo y confidencial": "Direct and confidential contact",
     "Hablemos<br><i style=\"color:var(--gold)\">de su caso</i>": "Let's talk<br><i style=\"color:var(--gold)\">about your case</i>",
@@ -1992,6 +2055,15 @@
           }
         }
       });
+    });
+
+    // Translate accessibility labels used by icon-only controls
+    document.querySelectorAll('[aria-label]').forEach(el => {
+      const label = el.getAttribute('aria-label');
+      const normLabel = normalizeStr(label);
+      if (dict[normLabel]) {
+        el.setAttribute('aria-label', dict[normLabel]);
+      }
     });
 
     // Translate form inputs placeholders
