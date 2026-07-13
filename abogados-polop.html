@@ -14,7 +14,7 @@
   <meta name="author" content="Saval García Abogados">
   <meta name="theme-color" content="#0f1c35">
   <meta name="geo.region" content="ES-VC">
-  <meta name="geo.placename" content="Callosa d'en Sarrià, Alicante">
+  <meta name="geo.placename" content="Polop, Alicante">
   <meta name="geo.position" content="38.6582;-0.0868">
   <meta name="ICBM" content="38.6582, -0.0868">
   <!-- Open Graph -->
@@ -367,31 +367,46 @@
   </style>
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "LegalService",
-    "name": "Saval García Abogados — Polop",
-    "description": "Despacho de abogados y asesoría jurídica de referencia para clientes en Polop. Especialistas en Derecho Civil, Fiscal, Laboral, Penal y Ley de Segunda Oportunidad.",
-    "url": "https://savalgarciaabogados.es/abogados-polop.html",
-    "telephone": "+34614635342",
-    "email": "savalgarciaabogados@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "C/ Ramón y Cajal, 14, 1º",
-      "addressLocality": "Callosa d'en Sarrià",
-      "addressRegion": "Alicante",
-      "postalCode": "03510",
-      "addressCountry": "ES"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 38.6582,
-      "longitude": -0.0868
-    },
-    "areaServed": [
-      {"@type": "City", "name": "Polop"},
-      {"@type": "AdministrativeArea", "name": "Marina Baixa"}
-    ],
-    "priceRange": "$$"
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"LegalService",
+        "@id":"https://savalgarciaabogados.es/#firm",
+        "name":"Saval García Abogados - Polop",
+        "alternateName":"Asesoría Jurídica Saval García — Polop",
+        "description":"Despacho de abogados y asesoría jurídica de referencia para clientes en Polop. Especialistas en Derecho Civil, Fiscal, Laboral, Penal y Ley de Segunda Oportunidad.",
+        "url":"https://savalgarciaabogados.es/abogados-polop.html",
+        "telephone":"+34614635342",
+        "email":"savalgarciaabogados@gmail.com",
+        "foundingDate":"1989",
+        "numberOfEmployees":{"@type":"QuantitativeValue","value":3},
+        "address":{
+          "@type":"PostalAddress",
+          "streetAddress":"C/ Ramón y Cajal, 14, 1º",
+          "addressLocality":"Callosa d'en Sarrià",
+          "addressRegion":"Alicante",
+          "postalCode":"03510",
+          "addressCountry":"ES"
+        },
+        "geo":{"@type":"GeoCoordinates","latitude":38.6582,"longitude":-0.0868},
+        "hasMap":"https://maps.google.com/?q=Calle+Ramon+y+Cajal+14+Callosa+den+Sarria+Alicante",
+        "openingHoursSpecification":{
+          "@type":"OpeningHoursSpecification",
+          "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens":"09:00","closes":"17:00"
+        },
+        "areaServed":{"@type":"City","name":"Polop"},
+        "priceRange":"$$"
+      },
+      {
+        "@type":"WebPage",
+        "@id":"https://savalgarciaabogados.es/abogados-polop.html#webpage",
+        "url":"https://savalgarciaabogados.es/abogados-polop.html",
+        "name":"Abogados en Polop | Asesoría Jurídica, Fiscal y Mercantil",
+        "isPartOf":{"@id":"https://savalgarciaabogados.es/#website"},
+        "about":{"@id":"https://savalgarciaabogados.es/#firm"}
+      }
+    ]
   }
   </script>
 </head>
@@ -514,7 +529,7 @@
       </h1>
       
       <p class="a3 text-base sm:text-lg font-light leading-[1.8] mb-10 text-white/70">
-        Despacho de abogados y asesoría jurídica integral en Callosa d'en Sarrià. Actuamos como asesor fiscal y mercantil de empresas, autónomos y particulares, superando las funciones de una gestoría convencional. Ofrecemos defensa estratégica en Derecho Civil y Penal, planificación tributaria avanzada, reestructuraciones societarias a medida y representación ante los Tribunales de toda la provincia de Alicante.
+        Despacho de abogados y asesoría jurídica integral para clientes en Polop. Actuamos como asesor fiscal y mercantil de empresas, autónomos y particulares, superando las funciones de una gestoría convencional. Ofrecemos defensa estratégica en Derecho Civil y Penal, planificación tributaria avanzada, reestructuraciones societarias a medida y representación ante los Tribunales de toda la provincia de Alicante.
       </p>
       
       <div class="a4 flex flex-wrap items-center gap-6 mb-16">
@@ -1102,9 +1117,9 @@
       © 2026 · C/ Ramón y Cajal, 14 · 03510 Callosa d'en Sarrià · <span itemprop="addressRegion">Alicante</span>
     </p>
     <p>
-      <a href="Privacy_Policy_Saval_Garcia_Abogados_Styled.pdf" target="_blank" rel="noopener" download class="hover:text-[var(--gold)] transition-colors">Política de Privacidad</a>
+      <a href="politica-de-privacidad.html" class="hover:text-[var(--gold)] transition-colors">Política de Privacidad</a>
       <span class="mx-2 opacity-50">|</span>
-      <a href="Terms_Conditions_Saval_Garcia_Abogados.pdf" target="_blank" rel="noopener" download class="hover:text-[var(--gold)] transition-colors">Términos y Condiciones</a>
+      <a href="aviso-legal.html" class="hover:text-[var(--gold)] transition-colors">Términos y Condiciones</a>
     </p>
   </div>
 </footer>
@@ -1271,8 +1286,8 @@
 
     // Hero Section
     "Saval García Abogados · Desde 1989": "Saval García Lawyers · Since 1989",
-    "Abogados en<br>Polop y la<br><span>Marina Baixa</span>": "Lawyers & legal<br>advisory in<br><span>Callosa d'en Sarrià</span>",
-    "Despacho de abogados y asesoría jurídica integral en Callosa d'en Sarrià. Actuamos como asesor fiscal y mercantil de empresas, autónomos y particulares, superando las funciones de una gestoría convencional. Ofrecemos defensa estratégica en Derecho Civil y Penal, planificación tributaria avanzada, reestructuraciones societarias a medida y representación ante los Tribunales de toda la provincia de Alicante.": "Law firm and comprehensive legal advisory in Callosa d'en Sarrià. We act as tax and corporate advisors for businesses, self-employed professionals and individuals, going beyond the functions of a conventional agency. We offer strategic defense in Civil and Criminal Law, advanced tax planning, custom corporate restructurings and representation before the Courts throughout the province of Alicante.",
+    "Abogados en<br>Polop y la<br><span>Marina Baixa</span>": "Lawyers in<br>Polop and the<br><span>Marina Baixa</span>",
+    "Despacho de abogados y asesoría jurídica integral para clientes en Polop. Actuamos como asesor fiscal y mercantil de empresas, autónomos y particulares, superando las funciones de una gestoría convencional. Ofrecemos defensa estratégica en Derecho Civil y Penal, planificación tributaria avanzada, reestructuraciones societarias a medida y representación ante los Tribunales de toda la provincia de Alicante.": "Law firm and comprehensive legal advisory for clients in Polop. We act as tax and corporate advisors for businesses, self-employed professionals and individuals, going beyond the functions of a conventional agency. We offer strategic defense in Civil and Criminal Law, advanced tax planning, custom corporate restructurings and representation before the Courts throughout the province of Alicante.",
     "Áreas de práctica →": "Practice areas →",
     "Años de ejercicio": "Years of practice",
     "Áreas de especialización": "Areas of specialization",
@@ -1368,7 +1383,7 @@
     // Segunda Oportunidad Section
     "<span class=\"trule\"></span>Ley de Segunda Oportunidad · Cancelación de Deudas · Alicante": "<span class=\"trule\"></span>Second Opportunity Law · Debt Cancellation · Alicante",
     "Cancele sus deudas<br>y empiece de cero —<br><i style=\"color:var(--gold)\">con respaldo legal</i>": "Cancel your debts<br>and start from scratch —<br><i style=\"color:var(--gold)\">with legal backing</i>",
-    "La Ley de Segunda Oportunidad permite a particulares y empresas que se encuentren en situación de insolvencia puedan cancelar sus deudas —incluidas las de Hacienda y la Seguridad Social, dentro de los límites legales— y recuperar su vida financiera. Nuestros abogados en Callosa d'en Sarrià gestionan el proceso completo: desde el primer análisis de viabilidad hasta la obtención de la Exoneración del Pasivo Insatisfecho (EPI).": "The Second Opportunity Law allows individuals and companies in a situation of insolvency to cancel their debts —including those with the Treasury and Social Security, within legal limits— and recover their financial life. Our lawyers in Callosa d'en Sarrià manage the entire process: from the first feasibility analysis to obtaining the Discharge of Unsatisfied Liabilities (EPI).",
+    "La Ley de Segunda Oportunidad permite a particulares y empresas que se encuentren en situación de insolvencia puedan cancelar sus deudas —incluidas las de Hacienda y la Seguridad Social, dentro de los límites legales— y recuperar su vida financiera. Nuestros abogados en Polop gestionan el proceso completo: desde el primer análisis de viabilidad hasta la obtención de la Exoneración del Pasivo Insatisfecho (EPI).": "The Second Opportunity Law allows individuals and companies in a situation of insolvency to cancel their debts —including those with the Treasury and Social Security, within legal limits— and recover their financial life. Our lawyers in Polop manage the entire process: from the first feasibility analysis to obtaining the Discharge of Unsatisfied Liabilities (EPI).",
     "¿Quién puede acogerse?": "Who can qualify?",
     "Cualquier persona física —particular o autónomo— y jurídica que sea insolvente de buena fe y no pueda hacer frente al pago de sus deudas. No es necesario tener deudas millonarias: también funciona para deudas de tarjetas, préstamos personales, hipotecas y deudas fiscales o con la Seguridad Social dentro de los umbrales legales. Le analizamos su caso en una primera consulta para confirmar si cumple los requisitos.": "Any natural person —individual or self-employed— and legal entity that is insolvent in good faith and cannot meet the payment of their debts. It is not necessary to have millionaire debts: it also works for credit card debts, personal loans, mortgages and tax or Social Security debts within the legal thresholds. We analyze your case in an initial consultation to confirm if you meet the requirements.",
     "Análisis de Viabilidad y Estrategia": "Feasibility Analysis and Strategy",
@@ -1636,7 +1651,7 @@
   <div class="p-5 sm:p-6 rounded-xl shadow-[0_10px_50px_rgba(0,0,0,0.25)]" style="background:var(--carbon); border:1px solid rgba(201,168,76,.25); pointer-events:auto;">
     <p class="text-xs sm:text-sm font-light leading-relaxed mb-4" style="color:rgba(240,232,213,.8)">
       🍪 Utilizamos cookies propias y de terceros para fines analíticos y para asegurar que tenga la mejor experiencia en nuestra web.
-      <a href="Privacy_Policy_Saval_Garcia_Abogados_Styled.pdf" target="_blank" style="color:var(--gold)" class="hover:underline font-medium">Leer más</a>.
+      <a href="politica-de-privacidad.html" class="hover:text-[var(--gold)] transition-colors">Leer más</a>.
     </p>
     <div class="flex gap-3">
       <button onclick="acceptCookies()" class="w-full text-[.75rem] font-semibold tracking-[.1em] uppercase px-6 py-3.5 rounded-lg transition-colors cursor-pointer" style="background:var(--gold);color:var(--carbon)" onmouseover="this.style.background='var(--gold2)'" onmouseout="this.style.background='var(--gold)'">Aceptar cookies</button>
