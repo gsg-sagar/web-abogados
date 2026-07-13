@@ -1291,7 +1291,7 @@
     }
     
     btn.addEventListener('click', toggle);
-    links.forEach(l => {
+        links.forEach(l => {
       l.addEventListener('click', (e) => {
         const targetId = l.getAttribute('href');
         if (targetId && targetId.startsWith('#')) {
@@ -1308,12 +1308,17 @@
               targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 300);
           }
-        } else {
-          // Dejar navegar normalmente, pero asegurar que cerramos el menú en el historial del DOM
+        } else if (targetId) {
+          e.preventDefault();
           nav.classList.remove('active');
           burgerIcon.classList.remove('hidden');
           closeIcon.classList.add('hidden');
           document.body.style.overflow = '';
+          
+          // Forzar la navegación limpia con un retardo imperceptible para asegurar que los hilos de JS del menú móvil finalicen
+          setTimeout(() => {
+            window.location.href = targetId;
+          }, 150);
         }
       });
     });
