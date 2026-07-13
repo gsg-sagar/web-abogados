@@ -925,19 +925,27 @@
     btn.addEventListener('click', toggle);
     links.forEach(l => {
       l.addEventListener('click', (e) => {
-        e.preventDefault();
         const targetId = l.getAttribute('href');
-        const targetEl = document.querySelector(targetId);
-        
-        nav.classList.remove('active');
-        burgerIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        document.body.style.overflow = '';
-        
-        if (targetEl) {
-          setTimeout(() => {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 300);
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetEl = document.querySelector(targetId);
+          
+          nav.classList.remove('active');
+          burgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          document.body.style.overflow = '';
+          
+          if (targetEl) {
+            setTimeout(() => {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+          }
+        } else {
+          // Dejar navegar normalmente, pero asegurar que cerramos el menú en el historial del DOM
+          nav.classList.remove('active');
+          burgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          document.body.style.overflow = '';
         }
       });
     });
