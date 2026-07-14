@@ -27,8 +27,8 @@ for filename, municipio in municipios.items():
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
         
-    title = f"Abogados {municipio} | Saval García"
-    desc = f"Despacho de abogados y asesoría jurídica en {municipio}. Asesor fiscal y mercantil con más de 35 años de experiencia. Especialistas en Derecho Civil, Penal, Laboral, Fiscal, Mercantil y Segunda Oportunidad. Atendemos toda la Marina Baixa."
+    title = f"Saval García Abogados en {municipio} | Servicios de asesoría jurídica"
+    desc = f"¿Busca un abogado experto en {municipio}? ¿Necesita una asesoría fiscal fiable? Deje de buscar, somos sus gestores y defensores legales de confianza. Más de 35 años de experiencia resolviendo problemas legales y optimizando empresas. ¡Consúltenos sin compromiso!"
     
     # Replace <title>
     content = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', content)
