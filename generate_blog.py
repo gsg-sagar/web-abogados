@@ -866,7 +866,7 @@ if "desahucio-grandes-tenedores" not in idx:
     {{
       title: "{art['title']}",
       excerpt: "{art['desc']}",
-      link: "{art['slug']}/index.html"
+      slug: "{art['slug']}"
     }},"""
         new_array = m.group(1) + old_posts + "," + new_entries + "\n  " + m.group(3)
         idx = idx[:m.start()] + new_array + idx[m.end():]
