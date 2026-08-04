@@ -65,7 +65,7 @@
           "addressCountry":"ES"
         },
         "geo":{"@type":"GeoCoordinates","latitude":38.6582,"longitude":-0.0868},
-        "hasMap":"https://maps.google.com/?q=Calle+Ramon+y+Cajal+14+Callosa+den+Sarria+Alicante",
+        "hasMap":"https://www.google.com/maps/place/Saval+Garc%C3%ADa+Abogados+%7C+Asesor%C3%ADa+jur%C3%ADdica+integral/@38.6495859,-0.122659,648m/data=!3m1!1e3!4m15!1m8!3m7!1s0xd62028317716699:0x3a9da8a15fad6dac!2sC.+Ram%C3%B3n+y+Cajal,+14,+03510+Callosa+de+Ensarri%C3%A1,+Alicante!3b1!8m2!3d38.6495859!4d-0.1200841!16s%2Fg%2F11c1dqcxpp!3m5!1s0xfddc866745052b9:0x5460d627fc071eb!8m2!3d38.6495875!4d-0.1200701!16s%2Fg%2F11wmtb5_7z?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D",
         "openingHoursSpecification":{
           "@type":"OpeningHoursSpecification",
           "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],
@@ -479,6 +479,15 @@
       box-shadow: 0 6px 16px rgba(15,28,53,0.15);
     }
   </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9FR5QJT3P"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-G9FR5QJT3P');
+</script>
+
 </head>
 <body>
 <div id="scroll-progress" aria-hidden="true"></div>
@@ -616,9 +625,119 @@
 
 <script>
   const posts = [
-    { title: "Contrato de opción de compra: una oportunidad para comprar con más tiempo", slug: "contrato-de-opcion-de-compra", excerpt: "La opción de compra concede el derecho a adquirir un inmueble en un plazo determinado y precio fijado, ideal cuando se necesita tiempo para buscar financiación." },
+{ title: "Contrato de opción de compra: una oportunidad para comprar con más tiempo", slug: "contrato-de-opcion-de-compra", excerpt: "La opción de compra concede el derecho a adquirir un inmueble en un plazo determinado y precio fijado, ideal cuando se necesita tiempo para buscar financiación." },
     { title: "La tercería de dominio", slug: "la-terceria-de-dominio", excerpt: "Descubra cómo la tercería de dominio protege sus bienes frente a embargos indebidos en procesos de ejecución judicial." },
-    { title: "Campaña de la Renta 2026: Información y servicios de gestión", slug: "campana-de-la-renta-2025", excerpt: "Todo lo que necesita saber sobre la campaña de IRPF 2026 y cómo podemos ayudarle a presentar su declaración sin errores." }
+    { title: "Campaña de la Renta 2026: Información y servicios de gestión", slug: "campana-de-la-renta-2026", excerpt: "Todo lo que necesita saber sobre la campaña de IRPF 2026 y cómo podemos ayudarle a presentar su declaración sin errores." },
+    {
+      title: "El Tribunal Constitucional anula requisitos para plantear demandas de desahucio",
+      excerpt: "El pasado mes de enero el Tribunal Constitucional anuló requisitos para plantear demandas de desahucio que vinculaban a grandes tenedores...",
+      slug: "desahucio-grandes-tenedores"
+    },
+    {
+      title: "Importante acuerdo de la Audiencia Provincial de Barcelona sobre okupas",
+      excerpt: "Los magistrados de la Audiencia Provincial de Barcelona acordaron no considerar delito de coacciones el corte de suministros a un okupa...",
+      slug: "acuerdo-audiencia-provincial-barcelona-okupas"
+    },
+    {
+      title: "¿Libertad de expresión o revictimización?",
+      excerpt: "El caso de José Bretón, condenado por el asesinato de sus hijos, vuelve a generar controversia. Una editorial pretende publicar un libro...",
+      slug: "libertad-de-expresion-o-revictimizacion"
+    },
+    {
+      title: "¿Tienes una hipoteca? Podrías estar pagando de más sin saberlo",
+      excerpt: "En muchas hipotecas se incluyen cláusulas abusivas que afectan directamente a tu bolsillo y tú podrías reclamarlas...",
+      slug: "reclamación-clausulas-abusivas-hipotecas"
+    },
+    {
+      title: "Asesoramiento fiscal especializado para empresas y profesionales",
+      excerpt: "Le ofrecemos asesoramiento fiscal especializado para empresas y profesionales, ayudándole a tomar decisiones inteligentes...",
+      slug: "asesoramiento-fiscal-especializado-empresas"
+    },
+    {
+      title: "¿Necesitas un contrato bien hecho? Nosotros lo hacemos a tu medida",
+      excerpt: "Te ayudamos a confeccionar contratos personalizados para que tus acuerdos estén bien claros y protegidos desde el inicio...",
+      slug: "redaccion-y-revision-de-contratos"
+    },
+    {
+      title: "Choque de trenes entre el Tribunal Supremo y el Tribunal Constitucional",
+      excerpt: "En los últimos meses, se ha intensificado un conflicto entre las más altas esferas de la Magistratura española...",
+      slug: "conflicto-tribunal-supremo-constitucional"
+    },
+    {
+      title: "Protege tu legado, asegura tu voluntad",
+      excerpt: "Redactar un testamento a medida no es solo un trámite, es un acto de previsión, de cuidado y de protección de tu patrimonio...",
+      slug: "testamento-derecho-sucesorio"
+    },
+    {
+      title: "Los delitos de descubrimiento y revelación de secretos: Una realidad en auge",
+      excerpt: "El avance imparable de las nuevas tecnologías ha traído consigo una proliferación de delitos que atentan contra la intimidad...",
+      slug: "delito-descubrimiento-revelacion-secretos"
+    },
+    {
+      title: "¿Qué pasa si descubres un tesoro en España?",
+      excerpt: "El Código Civil español regula qué ocurre cuando alguien encuentra un tesoro escondido. Si el tesoro está en tu terreno...",
+      slug: "hallazgo-tesoro-código-civil"
+    },
+    {
+      title: "Delitos contra la salud pública",
+      excerpt: "En España y en la Comunidad Valenciana, las condenas por delitos contra la salud pública se han mantenido estables...",
+      slug: "delitos-contra-la-salud-pública"
+    },
+    {
+      title: "¿Has sido víctima de una estafa bancaria por phishing? No estás indefenso",
+      excerpt: "Cada día, miles de consumidores sufren fraudes por parte de delincuentes que se hacen pasar por su banco...",
+      slug: "estafa-bancaria-phishing"
+    },
+    {
+      title: "¿Te ha notificado Hacienda un procedimiento de comprobación de valores?",
+      excerpt: "Tienes derecho a defenderte sin dejarte amedrentar por la Administración. Este procedimiento lo inicia la Administración Tributaria...",
+      slug: "procedimiento-comprobación-valores-hacienda"
+    },
+    {
+      title: "Apropiación indebida",
+      excerpt: "Este tipo penal requiere que el autor se quede con algo que debía devolver en virtud de cualquier título mediando o no confianza...",
+      slug: "delito-apropiacion-indebida"
+    },
+    {
+      title: "Las tarjetas de crédito revolving y condiciones usurarias",
+      excerpt: "Atención consumidores. Las tarjetas de crédito revolving y otros productos financieros pueden esconder condiciones usurarias...",
+      slug: "reclamación-tarjetas-revolving-usura"
+    },
+    {
+      title: "Un lío en las altas esferas de la Fiscalía",
+      excerpt: "El Tribunal Supremo ha dictado auto de transformación de diligencias previas en procedimiento abreviado contra el Fiscal General del Estado...",
+      slug: "fiscal-general-estado-revelacion-secretos"
+    },
+    {
+      title: "El cómplice en el Derecho Penal",
+      excerpt: "En nuestro ordenamiento jurídico, no solo el autor del delito puede ser castigado. También lo será quien coopera de forma secundaria...",
+      slug: "cómplice-en-derecho-penal"
+    },
+    {
+      title: "Concurso de acreedores sin masa",
+      excerpt: "¿Tienes deudas que no puedes pagar y ningún bien embargable? Existe una solución legal rápida: el concurso de acreedores sin masa...",
+      slug: "concurso-acreedores-sin-masa"
+    },
+    {
+      title: "Adquisición de terreno por efecto del río (Aluvión)",
+      excerpt: "El Código Civil, en su artículo 366, regula una interesante forma de adquirir terreno: mediante el conocido en la práctica como aluvión...",
+      slug: "adquisición-terreno-aluvion-rios"
+    },
+    {
+      title: "Análisis sobre el futuro de la vivienda turística en la Comunidad Valenciana",
+      excerpt: "Asistimos al curso organizado por la Universidad de Alicante sobre el nuevo escenario para las viviendas de uso turístico...",
+      slug: "viviendas-uso-turístico-comunidad-valenciana"
+    },
+    {
+      title: "¿Diferencia conceptual entre ser investigado, procesado, acusado, condenado o absuelto?",
+      excerpt: "Explicamos las diferencias en el sistema penal español entre ser investigado, procesado, acusado, condenado o absuelto...",
+      slug: "diferencias-investigado-procesado-acusado"
+    },
+    {
+      title: "¿Vas a aceptar una herencia? Antes de firmar, asesórate",
+      excerpt: "En la práctica diaria es común ver cómo muchos sucesores intentan ahorrar costes evitando contratar a un abogado experto...",
+      slug: "asesoramiento-aceptacion-herencia"
+    },
   ];
   const postsContainer = document.getElementById('posts');
   const render = (list) => {
