@@ -1,6 +1,6 @@
 import os, re
 
-base_dir = r"C:\Users\USUARIO\Documents\savalgarciabogados"
+base_dir = os.path.dirname(os.path.abspath(__file__))
 
 municipios = {
     "abogados-alfaz-del-pi.html": "Alfaz del Pi",

@@ -40,7 +40,7 @@ def process_file(filepath):
         print(f"Updated {filepath}")
 
 def main():
-    root = r"C:/Users/USUARIO/Documents/savalgarciabogados"
+    root = os.path.dirname(os.path.abspath(__file__))
     for dirpath, _, filenames in os.walk(root):
         for filename in filenames:
             if filename.lower().endswith('.html'):

@@ -8,7 +8,7 @@ Generate 22 blog article pages from template, with:
 """
 import os, re, json
 
-BASE = r"C:\Users\USUARIO\Documents\savalgarciabogados\blog"
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "blog")
 TEMPLATE = os.path.join(BASE, "campana-de-la-renta-2025", "index.html")
 
 # ─── Read template ───
@@ -681,10 +681,12 @@ for art in articles:
     head = tpl_head
     head = re.sub(r'<title>.*?</title>', f'<title>{art["title"]} | Blog Saval Garcia Abogados</title>', head)
     head = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{art["desc"]}">', head)
-    head = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="https://savalgarciaabogados.es/blog/{slug}/">', head)
+    head = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="https://www.savalgarciaabogados.es/blog/{slug}/">', head)
+    head = re.sub(r'<link rel="alternate" hreflang="es" href="[^"]*">', f'<link rel="alternate" hreflang="es" href="https://www.savalgarciaabogados.es/blog/{slug}/">', head)
+    head = re.sub(r'<link rel="alternate" hreflang="x-default" href="[^"]*">', f'<link rel="alternate" hreflang="x-default" href="https://www.savalgarciaabogados.es/blog/{slug}/">', head)
     head = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{art["title"]}">', head)
     head = re.sub(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{art["desc"]}">', head)
-    head = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="https://savalgarciaabogados.es/blog/{slug}/">', head)
+    head = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="https://www.savalgarciaabogados.es/blog/{slug}/">', head)
     head = re.sub(r'<meta name="twitter:title" content="[^"]*">', f'<meta name="twitter:title" content="{art["title"]}">', head)
     head = re.sub(r'<meta name="twitter:description" content="[^"]*">', f'<meta name="twitter:description" content="{art["desc"]}">', head)
 
@@ -694,7 +696,7 @@ for art in articles:
 <section id="inicio" aria-label="Blog Article" class="relative pt-16 flex items-center" style="min-height: 25vh; background: var(--carbon);">
   <div class="relative z-20 px-[5vw] py-10 w-full max-w-7xl mx-auto">
     <div class="relative max-w-4xl">
-      <a href="../index.html" class="text-[.62rem] font-medium tracking-[.22em] uppercase mb-6 inline-block transition-colors hover:text-white" style="color:var(--gold)">
+      <a href="/blog/" class="text-[.62rem] font-medium tracking-[.22em] uppercase mb-6 inline-block transition-colors hover:text-white" style="color:var(--gold)">
         &#8592; Volver al Blog
       </a>
       <h1 class="a1 serif text-4xl md:text-5xl lg:text-6xl mb-6 leading-[1.1]" style="color:var(--sand)">{art["title"]}</h1>
